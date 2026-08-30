@@ -41,6 +41,3 @@ Plugins/
 
 # Local device-signing key — never commit a private key to a public repo
 spk_debug_key.pem
-
-# Real Supabase project URL/key — see SupabaseConfig.example.ts for the template
-Assets/Scripts/Backend/SupabaseConfig.ts

@@ -9,10 +9,22 @@
 // RLS policies grant access to the `anon` role directly (see
 // supabase/migrations/0001_checkpoint_schema.sql), matching this key's scope.
 //
-// Actual values live in SupabaseConfig.ts, which is git-ignored — see
-// SupabaseConfig.example.ts for what to fill in, and README.md for the full walkthrough.
+// Connection details come from the SupabaseCredentials SceneObject's Inspector fields
+// (see SupabaseCredentials.ts), not a git-ignored .ts file — setSupabaseConfig() is
+// called from that component's onAwake(), which is guaranteed to run before any other
+// component's OnStartEvent (every object's onAwake runs before any object's OnStartEvent
+// — see AGENTS.md's Script Execution section), so these are always set before the first
+// real request goes out, regardless of where SupabaseCredentials sits in the hierarchy.
 
-import { REST_URL, STORAGE_URL, PUBLISHABLE_KEY } from './SupabaseConfig'
+let REST_URL = ''
+let STORAGE_URL = ''
+let PUBLISHABLE_KEY = ''
+
+export function setSupabaseConfig(config: { restUrl: string; storageUrl: string; publishableKey: string }): void {
+  REST_URL = config.restUrl
+  STORAGE_URL = config.storageUrl
+  PUBLISHABLE_KEY = config.publishableKey
+}
 
 const internetModule: InternetModule = require('LensStudio:InternetModule')
 

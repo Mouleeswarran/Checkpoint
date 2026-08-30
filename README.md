@@ -33,10 +33,10 @@ Read `0001`'s own header comment before running it — it explains the RLS/secur
 
 ### 3. Fill in your Supabase config
 
-Copy `Assets/Scripts/Backend/SupabaseConfig.example.ts` to `Assets/Scripts/Backend/SupabaseConfig.ts` (same folder — this exact filename is git-ignored, so your values never get committed) and fill in:
+Select the `SupabaseCredentials` SceneObject in the scene and fill in your own project's values on the component in the Inspector:
 
-- `REST_URL` / `STORAGE_URL` — your project's URL, from Settings → Data API in the Supabase dashboard.
-- `PUBLISHABLE_KEY` — Settings → API Keys → the "publishable" key (the newer name for what used to be called the anon key). This is safe to ship in client code; it's scoped entirely by the RLS policies from step 2.
+- `Rest Url` / `Storage Url` — your project's URL, from Settings → Data API in the Supabase dashboard.
+- `Publishable Key` — Settings → API Keys → the "publishable" key (the newer name for what used to be called the anon key). This is safe to ship in client code; it's scoped entirely by the RLS policies from step 2. These are intentionally left blank in this repo — never commit real values there (same rule as the Remote Service Gateway credentials in the next step).
 
 Recompile in Lens Studio — the Lens now talks to your own project.
 
