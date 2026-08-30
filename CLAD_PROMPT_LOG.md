@@ -5,7 +5,7 @@ This file tracks the prompts used to build this project with Claude/CLAD, as req
 Hackathon: https://lenslist.co/clad-summer-hackathon#overview
 Week 3 theme: **Connect** — build a spatial experience that connects people, platforms, or everyday communication workflows.
 
-**Note on this file:** a curated selection of 73 prompts, renumbered sequentially in the order they happened — the full concept/architecture arc that shaped this project (naming, the Custom Locations vs. GPS decision, why Spatial Anchors and custom ML were both considered and ruled out) plus every prompt that directed real work on the Lens Studio project (a feature built, a bug fixed, a script/scene/schema change made). Left out: prompts about repo/submission logistics (renaming, privacy redaction, README/doc restructuring, git push) and video/demo-script writing, since none of those touch the Lens Studio project itself. A prompt number mentioned inside another entry's own text (e.g. "the same bug as Prompt 40") refers to that prompt's original number from the full build session, not this file's renumbering — most such references predate this file's own curation and were never meant to be a clickable index.
+**Note on this file:** a curated selection of 71 prompts, renumbered sequentially in the order they happened — the full concept/architecture arc that shaped this project (naming, the Custom Locations vs. GPS decision, why Spatial Anchors and custom ML were both considered and ruled out) plus every prompt that directed real work on the Lens Studio project (a feature built, a bug fixed, a script/scene/schema change made). Left out: prompts about repo/submission logistics (renaming, privacy redaction, README/doc restructuring, git history/push), the RemoteServiceGateway credential leak and its fix, and video/demo-script writing, since none of those touch the Lens Studio project's actual features. A prompt number mentioned inside another entry's own text (e.g. "the same bug as Prompt 40") refers to that prompt's original number from the full build session, not this file's renumbering — most such references predate this file's own curation and were never meant to be a clickable index.
 
 ---
 
@@ -827,35 +827,7 @@ Verified live: recompiled clean, redid the full Start → narrate → Stop → E
 
 ---
 
-**Prompt 68 (with screenshot of RemoteServiceGatewayCredentials showing real tokens):**
-> [Image] do we remove this when uploading? also what is this spkDebug_key, we need to move the md files that only i need to the desktop. plus [Image] we need to only have single add button that will create a field with all the 4 values are clubbed together. also have a waring add custom location to scene object before adding and running onboarder.
-
-**Action taken:** Found a genuine, serious secret leak the user caught by eye that no earlier grep-based audit had found — the OpenAI/Google/Snap tokens on `RemoteServiceGatewayCredentials` aren't in any `.ts` source file, they're serialized directly inside `Assets/Scene.scene`, which was already sitting in the (unpushed) commit history. Explained `spk_debug_key.pem` is just the local device-signing private key (already `.gitignore`d, never tracked) — a smaller, already-handled question.
-
-Given the token leak, asked a direct confirm-before-destructive-action question (Prompt 126) about sequencing, rather than immediately wiping history unprompted.
-
----
-
-**Prompt 69:**
-> I'm yet to record the video should we remove now or it is removed and stored seperately
-
-**Action taken:** Answered the sequencing question, then executed the full fix — the same pattern already proven for `SupabaseConfig.ts` (real values live locally, placeholders go in what's committed), adapted for a native scene component's serialized data (which can't be split into a separate git-ignored file the way a `.ts` constant can):
-
-1. Blanked the 3 tokens live via `scene-graphql setProperty` + `project.save()`.
-2. Since nothing had been pushed yet, wiped the local git history entirely and recommitted fresh as one clean commit — guaranteeing the real tokens exist in zero commits ever, rather than just being reverted in a later one (which would still leave them recoverable via `git log -p`).
-3. Restored the real tokens in the *live, uncommitted* working copy immediately after — confirmed via `git status` showing `Assets/Scene.scene` as modified-but-uncommitted, so AI features kept working for the user's own testing/demo recording without ever being in what gets pushed.
-4. Installed a local `.git/hooks/pre-commit` hook that scans staged `Scene.scene` diffs for non-empty RSG tokens and blocks the commit if found — tested live (staged the real-token version, confirmed the commit was actually rejected, then unstaged cleanly) rather than just written and assumed working.
-
-Also actioned the other three asks in the same message:
-- Moved `DEMO_SCRIPT.md` to the Desktop (personal recording aid, not a submission deliverable).
-- Redesigned `SiteOnboarder.ts` from four parallel arrays to a single bundled array — found Lens Studio's `@typedef` decorator (confirmed via real precedent already in this project's own dependencies: SpectaclesUIKit's `Callback`, SIK's `HandVisualOverrideItem`) lets one `@input` array element carry multiple named sub-fields with a single "+ Add Value" button, correcting an earlier wrong claim this wasn't possible.
-- Added the requested warning: `SiteOnboarder` now prints a clear runtime warning if a Custom Location Id has no matching scene node wired yet, and `README.md`'s setup steps were reordered so the scene-wiring happens before the onboarder step.
-
-Verified live: Inspector screenshot confirmed the single "Sites" list with one "+ Add Value" button (this is also what Prompt 127 pushed further). Confirmed via `git log`/`git diff` that the fresh history contains blanked tokens in every commit, and the real tokens only ever exist as an uncommitted local change.
-
----
-
-**Prompt 70 (with screenshot of the Inspector):**
+**Prompt 68 (with screenshot of the Inspector):**
 > [Image] it needs single add button but 4 text inputs name id, lat and long anything if we missed
 
 **Action taken:** Confirmed the `@typedef` rework from Prompt 126 actually renders correctly in the Inspector — one "Sites" list, one "+ Add Value" button, each entry expanding to Site Name / Latitude / Longitude / Custom Location Id together. Updated `README.md`'s onboarding step to describe the new field labels.
@@ -864,7 +836,7 @@ Verified live: selected the `SiteOnboarder` object and screenshotted the Inspect
 
 ---
 
-**Prompt 71:**
+**Prompt 69:**
 > can we make the whole menu scene come in front of us? when entered in lens
 
 **Action taken:** Every top-level panel (Name/Site/Menu/Notes/Session/History/AskAI, plus ImageViewer) was authored at a fixed world position, assuming the camera always starts at the world origin facing -Z. `PanelManager` now re-anchors the whole panel group, once at boot, to the camera's actual current pose — same relative arrangement between panels, just centered on wherever the technician (or, in Preview, wherever the simulated camera) really is.
@@ -875,7 +847,7 @@ Verified live, including under a real stress case: this Preview session's camera
 
 ---
 
-**Prompt 72 (bug report, with screenshot):**
+**Prompt 70 (bug report, with screenshot):**
 > [Image] text gets wierdly cutout
 
 **Action taken:** Real root cause, found via the actual engine log rather than guessed at length first. Reproduced on Oakview Substation (29 recorded sessions by that point): the Ask AI Summary dropdown's drawer rendered rows well past its own masked viewport, garbling together with the Notes row/status text/buttons below it. Chased this for a while through `Dropdown.ts`'s pool-mode internals (parallel-array vs struct theories, `poolItemStep`/`windowHeight` staleness theories) before the actual answer surfaced in a routine log check: `"DropdownScroll : Maximum of 8 masking components."` — Lens Studio hard-caps simultaneous `MaskingComponent`s scene-wide, and every open dropdown drawer, sticky note body, and the site list all compete for that same budget of 8.
@@ -886,7 +858,7 @@ Verified live on the exact broken case: same 29-version site, Summary drawer now
 
 ---
 
-**Prompt 73:**
+**Prompt 71:**
 > in ask ai the notes summary and transcript is not reloaded when open we fixed this bug in the vesrion history. next is even though i got output from AI when i click back it shows the warning for us to leave.
 
 **Action taken:** Two real bugs, both traced to their exact line before touching anything.
