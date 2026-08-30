@@ -54,16 +54,7 @@ Do these in order — (b) and (c) are the scene-wiring half, and **must** happen
 
 **b. Wire the Custom Location node into the scene** — under `SiteRoot`, duplicate the existing `Custom Location: DemoSite` SceneObject, rename it, and point its `LocatedAtComponent` at your new `.location` asset instead.
 
-**c. Map the Location ID to that node** — add one line to `LOCATION_ID_TO_NODE_NAME` in `Assets/Scripts/Site/CustomLocationLoader.ts`:
-
-```ts
-export const LOCATION_ID_TO_NODE_NAME: Record<string, string> = {
-  ZDB3WPGEL6BA: 'Custom Location: DemoSite',
-  YOUR_NEW_LOCATION_ID: 'Custom Location: YourSiteName', // add this line
-}
-```
-
-Recompile.
+**c. Map the Location ID to that node** — select the `CustomLocationLoader` SceneObject (under `Managers`) and click "+ Add Value" on its `Location Mappings` list in the Inspector. Each click adds one bundled entry with **Location Id** and **Node Name** fields — fill in the Location ID from step (a) and the exact node name from step (b) (e.g. `Custom Location: YourSiteName`).
 
 **d. Register the site in Supabase** — enable the `SiteOnboarder` SceneObject at the scene root (it ships disabled). In the Inspector, click "Add Value" on its `Sites` list — each click adds one bundled entry with its own **Site Name**, **Latitude**, **Longitude**, and **Custom Location Id** fields (only the name is required). Flip `runOnboarding` on and run the Lens once. Check the Logger for `[SiteOnboarder] "<name>": created` — and heed any `WARNING` line, which means a Custom Location Id you entered isn't mapped in step (c) yet. Flip `runOnboarding` back off and disable the object again — re-running is safe (existing sites are skipped by name, not duplicated) but there's no reason to leave it on.
 

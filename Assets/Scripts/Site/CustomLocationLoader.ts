@@ -12,14 +12,40 @@ export interface LocationUnavailable {
   reason: 'not_onboarded' | 'node_missing'
 }
 
+// One bundled entry per mapping — same `@typedef` pattern as SiteOnboarder's
+// `SiteEntry` (confirmed precedent: SpectaclesUIKit's `Callback`, SIK's
+// `HandVisualOverrideItem`). Renders as a single "+ Add Value" list in the
+// Inspector instead of two parallel arrays that could fall out of sync by index.
+@typedef
+export class LocationMapping {
+  @input
+  @hint('The Location ID from your scanned Custom Location AR asset.')
+  locationId: string = ''
+
+  @input
+  @hint('Exact name of the "Custom Location: <Name>" SceneObject under SiteRoot for this location — see README.md.')
+  nodeName: string = ''
+}
+
 // Maps a site's `custom_location_id` (from Supabase) to the pre-wired Custom
-// Location SceneObject for it. Every onboarded site needs its Custom Location
-// node's name added here to match — see CLAD_PROMPT_LOG.md for why this has
-// to be wired at Editor time rather than resolved dynamically at runtime.
+// Location SceneObject for it — entered in the Inspector below, not hand-edited
+// here. Every onboarded site needs its Custom Location node's name added as a
+// row — see CLAD_PROMPT_LOG.md for why this has to be wired at Editor time
+// rather than resolved dynamically at runtime.
+//
+// Populated into this mutable lookup by CustomLocationLoader's own onAwake() —
+// same "manager sets shared module state before anyone reads it" pattern as
+// FontManager/Theme.ts and SupabaseCredentials/SupabaseClient.ts. Every
+// object's onAwake runs before any object's OnStartEvent, so this is always
+// populated before activate() (fired off a site-selection event) or
+// SiteOnboarder's onboarding (fired off its own OnStartEvent) ever read it,
+// regardless of where CustomLocationLoader sits in the hierarchy.
+let nodeNameByLocationId: Record<string, string> = {}
+
 // Exported so SiteOnboarder.ts can warn when a site is registered in Supabase
 // with a location ID that has no scene node wired up yet — see README.md.
-export const LOCATION_ID_TO_NODE_NAME: Record<string, string> = {
-  ZDB3WPGEL6BA: 'Custom Location: DemoSite',
+export function getNodeNameForLocation(locationId: string): string | undefined {
+  return nodeNameByLocationId[locationId]
 }
 
 @component
@@ -29,6 +55,11 @@ export class CustomLocationLoader extends BaseScriptComponent {
 
   @input
   siteRoot!: SceneObject
+
+  @input
+  @label('Location Mappings')
+  @hint('One row per onboarded site\'s Custom Location — Location ID (from the scan) and the exact SceneObject name it was wired up as under SiteRoot.')
+  locationMappings: LocationMapping[] = []
 
   private activeNode: SceneObject | null = null
   private _onLocationActivated = new Event<LocationActivation>()
@@ -47,6 +78,13 @@ export class CustomLocationLoader extends BaseScriptComponent {
   }
 
   onAwake(): void {
+    nodeNameByLocationId = {}
+    for (const mapping of this.locationMappings) {
+      const locationId = (mapping.locationId ?? '').trim()
+      const nodeName = (mapping.nodeName ?? '').trim()
+      if (locationId && nodeName) nodeNameByLocationId[locationId] = nodeName
+    }
+
     this.createEvent('OnStartEvent').bind(() => {
       this.sitePicker.onSiteSelected.add((selection) => {
         this.activate(selection.siteId, selection.siteName, selection.customLocationId)
@@ -75,7 +113,7 @@ export class CustomLocationLoader extends BaseScriptComponent {
       this._onLocationUnavailable.invoke({ siteId, siteName, reason: 'not_onboarded' })
       return
     }
-    const nodeName = LOCATION_ID_TO_NODE_NAME[customLocationId]
+    const nodeName = nodeNameByLocationId[customLocationId]
     if (!nodeName) {
       print('[CustomLocationLoader] No scene node mapped for location id: ' + customLocationId)
       this._onLocationUnavailable.invoke({ siteId, siteName, reason: 'node_missing' })

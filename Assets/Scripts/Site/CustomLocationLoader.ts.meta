@@ -28,6 +28,7 @@
   ExportUid: 00000000-0000-0000-0000-000000000000
   PackagePolicy: CanBeUnpacked
   ScriptInputsHidden:
+    locationMappings: false
     sitePicker: false
     siteRoot: false
   ScriptTypesHidden:
@@ -41,9 +42,17 @@
   DefaultScriptInputs:
     - sitePicker: !<MappingBased.AssignableType_1> 00000000-0000-0000-0000-000000000000
       siteRoot: !<reference.SceneObject> 00000000-0000-0000-0000-000000000000
+      locationMappings:
+        []
   ScriptTypes:
     -
       {}
   InputLines:
     - // @input AssignableType_1 sitePicker
     - // @input SceneObject siteRoot
+    - /*
+    - "@typedef LocationMapping"
+    - '@property {string} locationId {"hint":"The Location ID from your scanned Custom Location AR asset."}'
+    - '@property {string} nodeName {"hint":"Exact name of the \"Custom Location: <Name>\" SceneObject under SiteRoot for this location — see README.md."}'
+    - "*/"
+    - "// @input LocationMapping[] locationMappings = {} {\"label\":\"Location Mappings\", \"hint\":\"One row per onboarded site's Custom Location — Location ID (from the scan) and the exact SceneObject name it was wired up as under SiteRoot.\"}"

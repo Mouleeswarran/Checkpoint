@@ -116,7 +116,7 @@ export class NotePlacer extends BaseScriptComponent {
   private currentContentNode: SceneObject | null = null
   private siteUnavailableName: string | null = null
   // Keyed by site_id, not by contentNode — several demo sites share the one real scanned
-  // Custom Location (see CustomLocationLoader's LOCATION_ID_TO_NODE_NAME), so the same
+  // Custom Location (see CustomLocationLoader's Location Mappings), so the same
   // contentNode can end up holding more than one site's notes as children over the
   // course of a session. Doubles as the "have we already loaded this site" check
   // loadedSiteIds used to be, and lets a previously-visited site's notes be hidden

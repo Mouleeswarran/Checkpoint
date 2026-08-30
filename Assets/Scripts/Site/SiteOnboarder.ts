@@ -1,5 +1,5 @@
 import { supabaseInsert, supabaseSelect } from '../Backend/SupabaseClient'
-import { LOCATION_ID_TO_NODE_NAME } from './CustomLocationLoader'
+import { getNodeNameForLocation } from './CustomLocationLoader'
 
 // One bundled entry per site — `@typedef` (not `@component`) is Lens Studio's own
 // pattern for a multi-field struct usable as an `@input` array element, confirmed
@@ -43,8 +43,9 @@ export class SiteEntry {
 // space with Lens Studio's Custom Location AR package to get a Location ID, create a
 // `.location` asset from it, wire a "Custom Location: <Name>" SceneObject under
 // SiteRoot the same way the existing DemoSite node is set up, and add the
-// `custom_location_id` → node-name mapping in CustomLocationLoader.ts. See README.md
-// for the full walkthrough. A site with no Custom Location node wired yet still shows
+// `custom_location_id` → node-name mapping as a row in CustomLocationLoader's own
+// "Location Mappings" Inspector list. See README.md for the full walkthrough. A
+// site with no Custom Location node wired yet still shows
 // up in the Site Picker — CustomLocationLoader.onLocationUnavailable already handles
 // that case with a clear "this site isn't set up for notes yet" message.
 @component
@@ -90,9 +91,9 @@ export class SiteOnboarder extends BaseScriptComponent {
     if (!name) return
 
     const customLocationId = (entry.customLocationId ?? '').trim() || null
-    if (customLocationId && !LOCATION_ID_TO_NODE_NAME[customLocationId]) {
+    if (customLocationId && !getNodeNameForLocation(customLocationId)) {
       print(
-        `[SiteOnboarder] "${name}": WARNING — location ID "${customLocationId}" has no scene node mapped in CustomLocationLoader.ts yet. The site will still be created, but notes won't be able to anchor at it until that wiring is done (see README.md step (b)/(c)).`
+        `[SiteOnboarder] "${name}": WARNING — location ID "${customLocationId}" has no scene node mapped in CustomLocationLoader's Location Mappings yet. The site will still be created, but notes won't be able to anchor at it until that wiring is done (see README.md step (b)/(c)).`
       )
     }
 
