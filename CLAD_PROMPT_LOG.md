@@ -5,7 +5,7 @@ This file tracks the prompts used to build this project with Claude/CLAD, as req
 Hackathon: https://lenslist.co/clad-summer-hackathon#overview
 Week 3 theme: **Connect** — build a spatial experience that connects people, platforms, or everyday communication workflows.
 
-**Note on this file:** a curated selection of 76 prompts — the full concept/architecture arc that shaped this project (naming, the Custom Locations vs. GPS decision, why Spatial Anchors and custom ML were both considered and ruled out) plus every prompt that directed real work on the Lens Studio project (a feature built, a bug fixed, a script/scene/schema change made). Left out: prompts about repo/submission logistics (renaming, privacy redaction, README/doc restructuring, git push) and video/demo-script writing, since none of those touch the Lens Studio project itself. Original prompt numbers are kept as-is (so a numbering gap just means an entry was trimmed, not that anything is missing or broken) — order matches how the entries originally appeared in this file.
+**Note on this file:** a curated selection of 73 prompts, renumbered sequentially in the order they happened — the full concept/architecture arc that shaped this project (naming, the Custom Locations vs. GPS decision, why Spatial Anchors and custom ML were both considered and ruled out) plus every prompt that directed real work on the Lens Studio project (a feature built, a bug fixed, a script/scene/schema change made). Left out: prompts about repo/submission logistics (renaming, privacy redaction, README/doc restructuring, git push) and video/demo-script writing, since none of those touch the Lens Studio project itself. A prompt number mentioned inside another entry's own text (e.g. "the same bug as Prompt 40") refers to that prompt's original number from the full build session, not this file's renumbering — most such references predate this file's own curation and were never meant to be a clickable index.
 
 ---
 
@@ -13,20 +13,6 @@ Week 3 theme: **Connect** — build a spatial experience that connects people, p
 
 ### 2026-08-25
 **Prompt 1:**
-> https://lenslist.co/clad-summer-hackathon#overview we are going to build for week 3 challenge. what are the things we need for submission, and as we go you need to store these prompts in the seperate file. now we need a idea to start building
-
-**Action taken:** Fetched hackathon page, summarized Week 3 requirements and submission checklist, created this log file, and began brainstorming lens concepts for the "Connect" theme.
-
----
-
-**Prompt 2:**
-> we are going to brain strom the idea it should be helful for different field professionals
-
-**Action taken:** Presented 6 concept directions oriented around field professionals (Remote Expert Assist, Shift Handoff Board, Asset/Equipment Memory, Live Field-to-Dispatch Status, On-Site Team Punch List, Cross-Language Field Interpreter).
-
----
-
-**Prompt 3:**
 > we are going to build a lens that will act as a version control for the physical world,i can be a mechanic, electrician, plumber or AC mechanic or TV installer, or any kind of profession that does physical work. can add a sticky note what is impoertant or a warning may be. we need to put a list of sticky notes type with warning, plain, danger or even more types of sticky notes, also after pasting the sticky notes to the world anchor point we need to spawn a mic button with ASR module. and for the existing notes there we can tear it and also have a translate button which translates the text to different language but it is temporary english will be the permananet version. now comes the main thing, version control aka git this will start with a button record button but doesnt record video rather than, it gives us a session in bwtween this we can use image capture for future references and we can voice capture as user does a work and explaing what is he doing. this content is sent to AI and stored as a session summary record file or whatever we going to call it. if next person going to the same space and work on there they can view the sticky notes or the summary notes. we need a system prompt for the AI to have a general summary of the session in it. if any equipement mentioned or any use of particular product that is displayed in the summary report as bulletin, even the parts changes there. we need to store all the versions of summary report. also a new person is going to the site or the place, when session starts or before that the summary of previous session is loaded by the user, we will have a AI button that will read the report or summary when i ask a question the previous session summary is our context also it is the context for the new session will record and send to AI for new summary report.
 > this will act as Leave a note, it will act as  expert assist but across the timeline of the whole thing is worked on. a connect app that connects to the past,also works as a shift standoff board, equipment memory
 > before developing we need to discuss the technical scope of this project and come up with a propername
@@ -35,15 +21,7 @@ Week 3 theme: **Connect** — build a spatial experience that connects people, p
 
 ---
 
-**Prompt 4 (question/answer selections):**
-> Which name for this project? → **Checkpoint**
-> Should we lock the MVP scope as described (single pre-scanned location, typed sticky notes + ASR + tear gesture, one record→AI-summarize→store cycle, prior-version context load) and treat translate + multi-version timeline as stretch goals? → "we need all the concepts working, tear geature is not needed it is just a delete button this only applies on the sticky notes. we need to discuss about scanned location"
-
-**Action taken:** Locked project name **Checkpoint**. Noted that all concepts (sticky notes, ASR, translate, versioned record→summarize→store, cross-session AI context) must be working — no stretch-cutting. Replaced "tear" gesture with a simple delete button on sticky notes. Flagged the scanned-location (Custom Locations) mechanic for further discussion.
-
----
-
-**Prompt 5:**
+**Prompt 2:**
 > we still need to discuss the location is there a way to make it work on multiple location with gps positioning and load the scene there is that a  possibility?
 > we also need a seperate supabase not the snapcloud version as i dont have access. we have to decide this first
 
@@ -51,14 +29,14 @@ Week 3 theme: **Connect** — build a spatial experience that connects people, p
 
 ---
 
-**Prompt 6 (question/answer):**
+**Prompt 3 (question/answer):**
 > For sticky notes: on a return visit to a site (different day), should notes reappear pinned to their original real-world spot (not reliably possible with GPS-only precision) or surface as a nearby list/panel tied to the site instead? → "we also need to anchor it to similar position for eg we may have 5 pipes there. there is a change the notes can misplace with the pipes"
 
 **Action taken:** Proposed a hybrid architecture: GPS for site-level lookup (auto-detect/register which job site the user is at) + Custom Locations scan for precise, per-object (e.g. per-pipe) anchoring within a site, chained together via a Supabase-stored mapping from GPS coordinates to that site's Custom Location ID. Flagged this as two location subsystems instead of one, increasing build scope.
 
 ---
 
-**Prompt 7:**
+**Prompt 4:**
 > also store my propmts exactly as i put in chat no summaries or cut short, rectify the precious prompts stored in @ClAD_PROMPT_Log.
 > second is I'm ok with this acritecture, i want to know if it is possible to load different custom loactions in single lens or is it needed that we need to create that lens with the custom location inbuild?
 
@@ -66,56 +44,56 @@ Week 3 theme: **Connect** — build a spatial experience that connects people, p
 
 ---
 
-**Prompt 8:**
+**Prompt 5:**
 > I'm ok with the technician scanning the store and how would we go to our site with our lens and access the scanned location. with the ID it gives should i enter it first time we setup the site will the site load and store the value in DB and then the positions of the notes and everything? then on second time it loads the scan based on gps and anchors the notes?
 
 **Action taken:** Discovered the earlier Custom Locations answer was wrong for this workflow — Location ID entry is Editor-only/pre-publish per official docs, not something a running Lens can accept from a user live on-device. Researched and proposed a replacement: the separate **Spatial Anchors** system (`AnchorModule`/`AnchorSession`/`WorldAnchor`), which allows creating a persistent world anchor entirely at runtime from within Checkpoint itself (`createWorldAnchor`), scoped to a developer-chosen `area` string (our own site ID), removing the need for the separate Custom Locations app or manual ID entry. Flagged one open unknown: whether cross-device anchor persistence (Tech A's device → Tech B's different device) requires Snap Cloud account access the user said they lack.
 
 ---
 
-**Prompt 9:**
+**Prompt 6:**
 > we need to definetly confirm that it is accessible across devices otherwise the whole concept is no brainer
 
 **Action taken:** Confirmed via direct read of `Support/StudioLib.d.ts` that Snap's native `StorageScope` enum has only `User` (private) and `Session` (live multiplayer only) — no scope supports async cross-device data sharing, regardless of account access. This rules out Spatial Anchors (`WorldAnchor`) for cross-visit precision anchoring. Also confirmed no runtime API exists to bind an arbitrary Location ID string to a `LocationAsset` — `locationId` is Editor-API-only. Concluded: new-site onboarding must be a deliberate one-time Editor/republish step (industry-normal for B2B field AR); GPS auto-selects among already-onboarded sites for frictionless daily use; Custom Locations still gives full precision once onboarded, since published Location IDs are public on Snap's servers independent of the storage-scope limitation. User agreed to this architecture.
 
 ---
 
-**Prompt 10:**
+**Prompt 7:**
 > group or standalsone we have to setup in the editor right? got it. since now it has become like B2B is it good for our challenge? as the specs are targetting mass market will that be a criteria, if so should we explore any custom ML flow
 
 **Action taken:** Confirmed both Custom Location Group (capped at 5, must be <20m apart — not applicable to scattered sites) and standalone duplicated Custom Location nodes are Editor-setup only, with no documented numeric cap on standalone nodes. Addressed the strategic question of B2B/field-professional fit vs. mass-market positioning against the actual judging criteria (50% CLAD execution / 25% UX / 25% creativity & usefulness — no stated mass-market requirement) and recommended keeping the field-professional direction, with custom ML treated as optional polish rather than a required pivot.
 
 ---
 
-**Prompt 11:**
+**Prompt 8:**
 > I'm good to go with this direction. before starting i just have to look at the posibilites of using Custom ML to identify a space and use anchors to position it how difficicult it is and complex even if host the cutom ML hosted seperately that will help us reanchor. we ask professional for the space recorded and we use ML to anchor everything?
 
 **Action taken:** Assessing feasibility/complexity of replacing or augmenting Custom Locations with a custom (possibly separately-hosted) ML pipeline for space identification and object-level re-anchoring, to decide whether it belongs in the build. Recommended keeping ML as a thin optional assist (site-level confirmation via vision-LLM) rather than replacing Custom Locations, given the object-level precision requirement.
 
 ---
 
-**Prompt 12:**
+**Prompt 9:**
 > i thought of using ML for anchor marking is that not possible? i thought this should replace custom location
 
 **Action taken:** Explained precisely what replacing Custom Locations with custom ML would actually require (a from-scratch visual relocalization/VPS pipeline: reference mapping, feature matching, pose estimation, coordinate-frame integration) and why it's technically possible but a much harder, higher-risk undertaking than any other piece of this project — comparable to rebuilding what Snap's own engineers already built for Custom Locations, not a simple API swap.
 
 ---
 
-**Prompt 13:**
+**Prompt 10:**
 > let's stick with Custom Locations, start build planning
 
 **Action taken:** Architecture finalized. Moved into build planning — drafted and got approval on a full build plan covering Supabase schema, packages to install, scene/script structure, and a 9-phase incremental build order (saved to a local plan file). Confirmed defaults: manual (button-press) image capture during sessions, and simple name-entry technician identity (no login/accounts).
 
 ---
 
-**Prompt 15:**
+**Prompt 11:**
 > [Supabase project ref] project ID can you access my DB and setup the RLS
 
 **Action taken:** No Supabase MCP server is configured for this session (only Lens Studio's), and a project ID alone isn't sufficient credentials to connect — would need a personal access token or DB connection string. Rather than guess at RLS policies and run them unreviewed against a live project, wrote the full schema + RLS as a migration file (`supabase/migrations/0001_checkpoint_schema.sql`) for the user to review and run themselves, flagging the security trade-off of anon-key-only access (no login system, per earlier decision) directly in the file.
 
 ---
 
-**Prompt 19:**
+**Prompt 12:**
 > [publishable key] this is it
 
 **Action taken:** Received the publishable key. Verified via REST call that the schema has not been applied yet (404 on `sites`). Found the Supabase CLI is already authenticated on this machine but to a different account (its project list doesn't include this project) — confirmed via `supabase link`, which failed with a privileges error. Asked the user to either run the migration SQL directly in the Supabase Dashboard SQL Editor, or log the CLI into the correct account.
@@ -124,14 +102,14 @@ Week 3 theme: **Connect** — build a spatial experience that connects people, p
 
 ---
 
-**Prompt 21:**
+**Prompt 13:**
 > if we are going to go with few custom location why gps remove it is good right?
 
 **Action taken:** Agreed with the simplification — recommended dropping live GPS site-matching in favor of a manual site picker, given only a handful of pre-onboarded sites are realistic for the hackathon timeline. Updated the build plan file accordingly (architecture, package list, scene structure, phased build order, schema notes).
 
 ---
 
-**Prompt 24:**
+**Prompt 14:**
 > complete all the phases, since we are developing for specs 27 which is unreleased.
 
 **Action taken:** Built and verified Phases 4-8 end-to-end in Lens Studio Preview (Phase 9 stretch items left undone — optional per the plan):
@@ -147,7 +125,7 @@ Week 3 theme: **Connect** — build a spatial experience that connects people, p
 
 ---
 
-**Prompt 25:**
+**Prompt 15:**
 > we don't need vision llm
 
 **Action taken:** Dropped the vision-LLM site-confirmation stretch item from scope. Remaining Phase 9 stretch item (multi-version history UI) still optional; asked user what's next (that stretch item, or moving toward demo/submission prep). User chose to build the history UI first.
@@ -156,7 +134,7 @@ Week 3 theme: **Connect** — build a spatial experience that connects people, p
 
 ---
 
-**Prompt 27 (question answers):**
+**Prompt 16 (question answers):**
 > Note placement precision → "in device let it be the pinch point and to drag through the space it is good but in simulator we will use mouse point click with a mild offset in front of us from the clicked point"
 > Photo viewer → "we need a simple image viewer but it should button viewer be linked with the summary report open"
 > Translate behavior → "Add a language picker (Recommended)"
@@ -169,14 +147,14 @@ Week 3 theme: **Connect** — build a spatial experience that connects people, p
 
 ---
 
-**Prompt 20:**
+**Prompt 17:**
 > I ran the migration in the SQL Editor
 
 **Action taken:** Verified via REST call that the `sites` table now responds (200 OK) — migration confirmed applied. Starting Phase 1 of the approved build plan: installing Lens Studio packages and wiring `SupabaseClient.ts` with the confirmed project URL and publishable key.
 
 ---
 
-**Prompt 28:**
+**Prompt 18:**
 > we now need to create a better UI away from the generic stuff also the image viewer needs to be seperate window pops up above the summary report reader panel. also these sticky note and summary Reader needs a scroll view. also we have to makethe ai create summary report linked with the image like we do in hyperlink with the (1) not exactly the hyperlink. for our lens to understand where the Imagw will be referenced in summary. in image viewer i change with left or right button the summary below moves to that point of the scrollable text. also make every buttons and colour pallete unique to this lens
 
 **Action taken:** Implemented most of this in full, one item had to be scoped down after real debugging effort — disclosed honestly below:
@@ -190,14 +168,14 @@ Week 3 theme: **Connect** — build a spatial experience that connects people, p
 
 ---
 
-**Prompt 29:**
+**Prompt 19:**
 > we need a menu manager system every window will not be available at the same time it should pop up one by one
 
 **Action taken:** Built a central `PanelManager.ts` (`Assets/Scripts/Shared/`) that gates the app's seven top-level windows (name entry, site picker, notes, session recorder, history, ask AI, and a new main menu) so exactly one is enabled at a time — the rest are `sceneObject.enabled = false`. Added a new `MainMenu.ts` hub panel (5 themed buttons: Sticky Notes, Work Session, Version History, Ask AI, Switch Site) that every other panel returns to via a new "< Menu" back button, wired through a plain `Event<void> onBackRequested` on each panel (same public-Event pattern already used for `onSiteSelected`/`onSessionEnded`/`onNavigate` elsewhere in the codebase) so PanelManager stays the only thing that knows about show/hide logic. Sticky notes and the Image Viewer were deliberately left out of this exclusivity — notes are anchored to real physical spots and several must stay visible together, and the Image Viewer is meant to overlay on top of History, not replace it. Consolidated all seven panels to the same (0,0,-110) forward position now that only one is ever visible, instead of leaving them scattered around the field of view. Verified the full flow live in Preview: Save (name) → only Site Picker visible → select site → only Main Menu visible → each of Sticky Notes / Work Session / Version History / Ask AI opens alone and its "< Menu" button returns to Main Menu → Switch Site correctly re-shows Site Picker, now with its own back button since a site was already chosen once. Along the way, a leftover test sticky note from earlier verification happened to sit directly on the camera's forward axis and blocked pinches to anything behind it — cleaned that up via the note's own Delete button (real feature, not a workaround) rather than leaving stale test data in the scene.
 
 ---
 
-**Prompt 30:**
+**Prompt 20:**
 > this menu feels mid, it should be unique, when i presses the mic btn in the your name window it was super cool and effect i need that kind of effect. i would like skeuomorphism for the notes icons and panels not generic UI also there are so many overlapping happens in the buttons, panels need to fix it, after making UI corrections do the leaf test
 
 **Action taken:** Root-caused the "cool mic effect" the user meant: SpectaclesUIKit's default Button visual is `BeveledPrismVisual` — an opaque, physically-beveled 3D body with a forward pop on hover/press and a spinning specular highlight that tracks the interactor — but our own `themeButton()` had been overriding every button with a flat, semi-translucent `RoundedRectangleVisual`, which is why the rest of the UI read as generic next to it. Rewrote `themeButton()` (`Assets/Scripts/Shared/ThemedUI.ts`) to build a `BeveledPrismVisual` instead, reusing SUIK's own hover/press extrusion+rotation curve but with three new Checkpoint-branded prism palettes (amber/teal/danger, added to `Theme.ts` as `PRISM_TONE`) in place of Snap's default iridescent violet/mint one — this alone gets the "premium/tactile" feel and the animated highlight on every button in the app, not just the name-entry mic. Fixed a real regression this caused: the prism's opaque body is physically ~0.5–0.9cm deep, so every button's label text (previously offset 0.08cm forward, tuned for the old flat visual) was rendering inside the solid geometry and disappearing — bumped the label Z-offset to 0.95cm across all 9 files that create button labels.
@@ -212,7 +190,7 @@ Verified the full redesign live in Preview across every panel (Name, Site Picker
 
 ---
 
-**Prompt 31:**
+**Prompt 21:**
 > can we make the mainmenu with multiple smaller curverd square tiny panels for each btn, i need that knida stuff, remove the wood kinda background Screenshot 2026-08-25 at 8.17.43PM LensStudio-5.23.1.png Screenshot 2026-08-25 at 8.18.04PM LensStudio-5.23.1.png here you can see there is still overlaping btns the translate btn and mic btn should be outside the panel like in bottom or side so it looks good. we dont need to show visually the scanned location
 
 **Action taken:** Four fixes from the two attached screenshots and the request text:
@@ -226,7 +204,7 @@ Verified all four fixes live in Preview via screenshots: scan mesh gone, Main Me
 
 ---
 
-**Prompt 35:**
+**Prompt 22:**
 > can we make the UI elements as sceneobjects so i can re position and play along?
 
 **Follow-up answer (to the scope question asked back):**
@@ -243,7 +221,7 @@ Verified every converted panel individually via `CaptureRuntimeViewTool` screens
 
 ---
 
-**Prompt 36:**
+**Prompt 23:**
 > we need a ball at the top of the sticky notes which we can use to drag the sticky note to wherever we want
 
 **Action taken:** Added a small amber sphere ("drag handle") floating just above each sticky note's paper, authored on the `StickyNoteTemplate` prefab so every spawned note gets one. Built it from SpectaclesInteractionKit primitives rather than SpectaclesUIKit's `Button`: a `RenderMeshVisual` (sphere mesh + amber unlit material) plus `ColliderComponent` for the hit target, and `Interactable` + `InteractableManipulation` for the actual drag behavior. The key mechanism is `InteractableManipulation.manipulateRootSceneObject` — pointed at the note's own root instead of the ball itself, with rotation/scale disabled and translation-only enabled, so pinch-dragging the ball translates the *whole note* (paper, text, buttons, ball together), not just the sphere. `StickyNote.ts` sets the ball's collider radius at spawn time (`Shape.createSphereShape()`) and, on `onManipulationEnd`, persists the note's new position back to Supabase — but only for notes that have already been saved (`noteId` set); a still-unsaved note's position is captured fresh whenever it's first recorded, so nothing needs persisting before that.
@@ -257,7 +235,7 @@ Verified end-to-end in Preview after each fix: recompiled, did a full `RunAndCol
 
 ---
 
-**Prompt 37:**
+**Prompt 24:**
 > now lets make it user friendly, when entering name your first time? some thing like that above the panel. make the Heading text with different bold font and have unique font for btns and the all mic button should have only symbol, the place here and delete button should move with camera so it is easy to point and plce there, will it be on the pinch position or how does it work, can we remove that btn and have a pinch gesture to place the sticky note on pinch position. the menu back btn can we make it round icon back btn on left side top above panel
 
 **Follow-up answer (to the delete-button clarifying question asked back):**
@@ -279,7 +257,7 @@ Everything else in this prompt was verified live in Preview via screenshots afte
 
 ---
 
-**Prompt 38:**
+**Prompt 25:**
 > not [name]? tap to change should be at bottom. what happens when a person has multiple sites. if we are going to display only one site then we need gps to make it change as we go near the site
 
 **Action taken (button move):** `SitePicker.ts`'s "Not X? Tap to change" button belonged below the site list, but the list's length is data-driven (however many sites are in Supabase), so its position can't be a fixed authored Transform the way the round back button's could be — the panel doesn't know how tall the list will be until `loadSites()` actually resolves. Kept the button itself pre-authored (styling/theme untouched) but hid it (`sceneObject.enabled = false`) until `loadSites()` finishes, then positioned it at runtime via the same `takeRowY()` cursor the dynamic site rows and status text already use — so it always lands one row below wherever the list (or a "No sites onboarded yet" / "Could not load sites" status message) actually ended, and `updatePanelSize()` picks up the extra row automatically. Verified via screenshot: with one site, "Not [name]? Tap to change" now sits directly below "Demo Site (Test)" instead of above it.
@@ -288,7 +266,7 @@ Everything else in this prompt was verified live in Preview via screenshots afte
 
 ---
 
-**Prompt 39:**
+**Prompt 26:**
 > we have access for gps right? make the proximity to display the sites
 
 **Action taken:** Sites now sort nearest-first (not auto-selected — still a tap-to-confirm list, per Prompt 38's recommendation) and show a distance label. `sites.latitude`/`sites.longitude` already existed as unused columns from the very first schema migration (`0001_checkpoint_schema.sql`) — this reused them rather than adding new ones.
@@ -302,7 +280,7 @@ Verified in Preview: recompiled clean, confirmed via `RunAndCollectLogsTool` tha
 
 ---
 
-**Prompt 41:**
+**Prompt 27:**
 > give all the static text components text with its actual text in scene object itself also add a script where i can switch the fonts in inspector to reflect in all the components. we have different font for heading and other right so only ineed a simple manager script
 
 **Action taken:** Two changes.
@@ -316,7 +294,7 @@ Verified both live in Preview: a full refresh with the baked-in text showed ever
 
 ---
 
-**Prompt 43:**
+**Prompt 28:**
 > we need an indicator at the topright like a unique gps animation , the loading text should be finding nearby site. also populate with few demos so i can check if it can have a scrollview when it is more than 3 sites nearby. also if the player is accurately on a site the menu closes and the GPS animation visual scales and says we are loading your " " site
 
 **Action taken:** Four changes to `SitePicker.ts`, plus a new `GpsIndicator.ts` component.
@@ -335,7 +313,7 @@ Verified live in Preview: the radar badge renders and (per code review — see b
 
 ---
 
-**Prompt 47:**
+**Prompt 29:**
 > when i try to create a note it says select a site
 
 **Action taken:** Root cause: `CustomLocationLoader.activate()` — the piece that maps a selected site's `custom_location_id` to its scanned Custom Location scene node — silently prints and returns without ever firing `onLocationActivated` when a site has no `custom_location_id` set. `NotePlacer.ts` only sets `currentSiteId`/`currentContentNode` (required for arming a note) from that event, so a site with no Custom Location produces exactly this symptom: the technician *did* pick a site, but sticky notes still say "Select a site first" as if none was chosen. Confirmed via direct Supabase query — 5 of the 6 demo sites (everything except the original "Demo Site (Test)") were inserted in Prompts 43–44 with only `name`/`latitude`/`longitude`, never `custom_location_id`. Since `Oakview Substation` is the one that currently auto-selects (Prompt 45's persistent state), this hit on effectively every Preview run.
@@ -347,7 +325,7 @@ Verified: recompiled clean; refreshed and confirmed via log tail that `CustomLoc
 
 ---
 
-**Prompt 48:**
+**Prompt 30:**
 > we need a scrollable kinda text in the note so even if it crosses its limit it stores there. also the delete btn should be an icon btn and when translate show up it has to be with a drop down with popular options. the mic button should have the same effect it had in the your name box. it should be single click record and click to stop tramscription. the color of the note be different for different options
 
 **Action taken:** Five changes, all in `StickyNote.ts` (plus one small addition to `ThemedUI.ts`), driven by a screenshot showing a Warning note's body text overflowing past the paper and colliding with the "Saved" status label.
@@ -362,7 +340,7 @@ Verified: recompiled clean; refreshed and confirmed zero new errors/warnings tie
 
 ---
 
-**Prompt 49:**
+**Prompt 31:**
 > deleting a note should remove from the supabase
 
 **Action taken:** `StickyNote.deleteNote()` was doing a soft delete (`supabaseUpdate(..., { deleted: true })`) — a deliberate choice from migration 0001, which has no DELETE RLS policy on any table specifically so a leaked anon/publishable key (baked into the compiled Lens) can only add/edit data, never destroy it. Flagged this tradeoff to the user before changing it; they chose a real hard delete over keeping the safer soft-delete.
@@ -375,7 +353,7 @@ Verified: recompiled clean. Could not verify the delete round-trip live (same Ma
 
 ---
 
-**Prompt 51:**
+**Prompt 32:**
 > the trascription is not in englist but says it is in english and not able to translate in english can we try the ASR to write language what it is in?
 
 **Action taken:** Checked whether `AsrModule` (the current speech API, per `Support/StudioLib.d.ts`) exposes any language/locale option — it doesn't. `AsrTranscriptionOptions` only has `silenceUntilTerminationMs` and `mode`; there's no way to pin it to a language or read back which one it detected. Its deprecated predecessor, `VoiceML.ListeningOptions`, did have a `languageCode` field, but its own doc explicitly says "VoiceML capabilities are no longer supported. For Spectacles see options on ASRModule" — i.e. that knob was removed on the way to the module this project uses, not something switchable back on. So there's no code-level way to tell ASR which language to transcribe in, or to ask it what it detected.
@@ -386,7 +364,7 @@ Verified: recompiled clean. Not yet exercised live (same Main Menu obstruction a
 
 ---
 
-**Prompt 52:**
+**Prompt 33:**
 > [two screenshots] there is issue in scroll test when i go uo there is more space when i go down i cant reach the bottom. also scroll position should alawys be at the top
 
 **Action taken:** Root cause in `updateBodyScrollExtent()` (`StickyNote.ts`, Prompt 48): `ScrollWindow`'s scroll-edge math (`topEdge`/`bottomEdge`, and so `scrollPositionNormalized`) assumes its content is laid out symmetrically around the wrapper's own local origin — spanning ±scrollDimensions.y/2 — the same convention `SitePicker`'s site rows already use. `bodyText`'s own layoutRect top bound was a *fixed* `+BODY_VIEWPORT_H/2` relative to itself (needed for top-alignment/wrapping to work at all), which only happened to line up with that assumption when the text exactly filled the viewport. As content grew past it, that fixed anchor drifted away from the true ±contentH/2 the scroll math expects — producing exactly the reported symptom (dead space when scrolled up, unreachable bottom when scrolled down, worse the more text overflowed).
@@ -398,7 +376,7 @@ Verified live: found the app's Main Menu obstruction had cleared in the user's o
 
 ---
 
-**Prompt 53:**
+**Prompt 34:**
 > In summary report we need it to look like pages instead of scroll text it will have bunch of pages and we can change pages in it. The images will be still linked to the text there. When a image is shifted in preview we will go to that page. Also the we will have a paper pin at the paper top left edge for the look. And the current version no is displayed in right side of the papers when clicked drop down comes out so we can select from it we can also have the small AI button there.
 
 **Action taken:** A redesign of `HistoryPanel.ts` ("Version History" / summary report), five parts.
@@ -413,7 +391,7 @@ Verified: recompiled clean twice (once after the HistoryPanel rewrite, once afte
 
 ---
 
-**Prompt 58:**
+**Prompt 35:**
 > the sticky notes should only have look at while draging and at the spawn and not all the time
 
 **Action taken:** Found a `Billboard` component (SpectaclesInteractionKit) pre-authored on the `StickyNoteTemplate` prefab, continuously rotating every note to face the camera at all times — not something `StickyNote.ts` itself was driving, so this hadn't shown up in any of the script reads so far this session. With several notes placed around a site, all constantly re-facing the camera as the technician moves reads as noisy rather than helpful.
@@ -426,7 +404,7 @@ Verified: recompiled clean, refreshed with zero new errors (existing notes loade
 
 ---
 
-**Prompt 59:**
+**Prompt 36:**
 > when i click switch sites all thenotes from that site should go
 
 **Action taken:** `CustomLocationLoader.activate()` — the piece that enables a site's Custom Location node (and everything anchored under it, including every sticky note) — only ever ran when a site was actually *selected* from the list. Tapping "Switch Site" just reopens `SitePicker`; the outgoing site's node (and its notes) stayed enabled and visible in the background the whole time the technician was browsing for a new one, only disappearing once a new site got picked.
@@ -438,7 +416,7 @@ Verified: recompiled clean, refreshed with zero new errors. Same Main Menu tile-
 
 ---
 
-**Prompt 60:**
+**Prompt 37:**
 > when i opened another test site it also loads our main notes saved sites notes we need a proper restriction
 
 **Action taken:** Root cause: several demo sites in this dataset intentionally share the one real scanned Custom Location (`custom_location_id: 'ZDB3WPGEL6BA'`, set on all of them back in Prompt 47's fix) — so they all map to the exact same physical `contentNode` SceneObject. `NotePlacer` tracked "has this site's notes been loaded" with a plain `Set<string>` of site ids and never removed anything, so opening a second site that happens to share that node just added its notes as more siblings under the same node the first site's notes were already sitting in — nothing ever hid the first site's notes, so both showed at once.
@@ -451,7 +429,7 @@ Verified: recompiled clean, refreshed with zero new errors; confirmed the normal
 
 ---
 
-**Prompt 63:**
+**Prompt 38:**
 > [screenshot: Version History live, showing the paperclip floating disconnected above the panel, the AI robot icon, the version dropdown flush against the AI button with no gap, and the flat gray panel] paper clip properly position , then change the AI icon to something like atoms linked and AI text at bottom, space between version dropdown and AI btn. the panel should have a actual paper look to it even more taller and paper texture
 
 **Action taken:** First screenshot of this panel actually rendering — useful confirmation the Prompt 61 relayout worked structurally, even though it also showed everything this prompt asked to fix. Five changes, all in `HistoryPanel.ts`.
@@ -466,7 +444,7 @@ Verified: recompiled clean, refreshed with zero new errors. Attempted to reach V
 
 ---
 
-**Prompt 65:**
+**Prompt 39:**
 > we discussed about raw transcript and the summarized version with AI right in version where will be seeing or switching between it
 
 **Action taken:** Checked the actual code before answering — this genuinely didn't exist anywhere yet. `SessionRecorder` saves every narrated phrase to `session_captures` (`kind: 'transcript_chunk'`) as the technician speaks, but `SessionSummarizer` only ever *reads* those rows once (interleaved with photo markers) to produce the AI summary, then never again — the raw chunks sat in Supabase, write-only, with nothing in the UI ever reading them back. `HistoryPanel` only ever displayed the summary. Confirmed this with the user, then built the toggle on request.
@@ -479,7 +457,7 @@ Verified: recompiled clean, refreshed with zero new errors. Confirmed both new t
 
 ---
 
-**Prompt 68:**
+**Prompt 40:**
 > [two screenshots: opening the version dropdown, the trigger button itself visibly slides down — a ghosted "v1" left behind above it, the real "v1 ▾" button now overlapping the Summary/Transcript tabs below] instead of just moving the dropdown in front z axis now when i click dropdown the whole btn goes down its wierd
 
 **Action taken:** Root cause in SpectaclesUIKit's `Dropdown` itself, not anything specific to this project's code: on expand/collapse, Dropdown by default repositions its OWN `sceneObject` — which, since `Dropdown` was attached directly onto `versionButton`'s object (the `customTrigger` pattern used here and in StickyNote's Translate dropdown), means the trigger BUTTON itself — to keep an "anchor edge" visually fixed as the drawer grows. That behavior exists for when a parent layout container (Dropdown's own docs call out `ElementGroup` specifically) manages that compensation externally; nothing here is such a container, so left at Dropdown's default this read as the whole button sliding down every time the drawer opened, exactly as the screenshots show.
@@ -491,7 +469,7 @@ Verified: recompiled clean. Not yet exercised live — same Main Menu obstructio
 
 ---
 
-**Prompt 70:**
+**Prompt 41:**
 > in sticky notes we have to spawn the note at the index finger and thumb finger join point
 
 **Action taken:** `NotePlacer.commitPlacement()` previously always placed a new note using a `WorldQueryModule` surface hit-test (a ray from the pinch, projected onto whatever wall/mesh it hit, pulled back 5cm) — a "point at a surface" model, not "place it where your fingers are." Added `getPinchPosition()`, which reads the actual pinch join point — the midpoint between `hand.thumbTip.position` and `hand.indexTip.position` off SIK's `HandInteractor` — and made it the *first* choice in `commitPlacement()`'s fallback chain, ahead of the existing hit-test and camera-forward fallbacks (both kept, unchanged, as-is).
@@ -502,7 +480,7 @@ Verified: recompiled clean, refreshed with zero new errors. Could not verify the
 
 ---
 
-**Prompt 71:**
+**Prompt 42:**
 > in preview we dont have a hand tracking we can have a offset from click point to spawn the notes
 
 **Action taken:** Correct observation about Prompt 70's own fallback chain — `getPinchPosition()` only ever returns a real position for a genuine on-device `HandInteractor`; Preview's mouse-simulated interactor has no hand joints, so Preview always falls through to the hit-test-plus-pullback branch (`HIT_PULLBACK_CM`, pulling the note back off whatever surface the click ray hit, toward the camera). That branch already *was* "an offset from the click point" — just a barely-perceptible one at 5cm, pulled off a potentially-distant wall, which read as "the note just glues itself flat to whatever you clicked" during Preview testing.
@@ -513,7 +491,7 @@ Verified: recompiled clean. Refresh confirmed zero new errors; the actual placem
 
 ---
 
-**Prompt 72:**
+**Prompt 43:**
 > [Assets/Scripts/Session/SessionRecorder.ts:187] [SessionRecorder] ASR error: 1 when i start recording session
 
 **Action taken:** Code `1` is `AsrModule.AsrStatusCode.InternalError` — a generic platform-level failure, not something identifiable from the error code alone. Could not reproduce it directly (no way to simulate real microphone input through this session's tools) and the log tail available didn't happen to cover the moment this specific error fired, so the *root* platform cause is still unconfirmed — flagging one concrete thing worth checking: `SessionRecorder` is the only panel in the app combining mic (ASR) + camera + internet simultaneously, exactly the combination the project's own build notes flag as needing Extended Permissions configured in project settings before it reliably works, which nothing in this session has touched or verified.
@@ -526,7 +504,7 @@ Verified: recompiled clean, refreshed with zero new errors. Neither fix could be
 
 ---
 
-**Prompt 78:**
+**Prompt 44:**
 > [SessionRecorder.ts:210] [SessionRecorder] ASR error: 1 I'm still getting error, just replicate our sticky note ASR to fix the error
 
 **Action taken:** Took the instruction literally — read `StickyNote.startListening()` and `SessionRecorder.toggleRecording()` side by side line-by-line instead of comparing at a conceptual level like Prompts 75/76 had. Found one real, previously-missed difference: `StickyNote`'s mic button calls `this.asrModule.startTranscribing(opts)` **synchronously**, with nothing `await`ed first, directly inside the button's own `onTriggerUp` handler — same call stack as the user's tap. `SessionRecorder.toggleRecording()`'s start branch, even after Prompt 76's one-frame-yield fix, still `await`ed the Supabase session-insert (and then a frame) *before* calling `startListeningLoop()` — meaning `startTranscribing()` always ran several ticks removed from the tap that triggered it, never in the tap's own synchronous context the way sticky notes' does.
@@ -537,7 +515,7 @@ Verified: recompiled clean, refreshed with zero new errors on scene load. Not ye
 
 ---
 
-**Prompt 81:**
+**Prompt 45:**
 > [full log: `calling startTranscribing` → `startTranscribing returned — listening` → a long run of `ASR update="..."` lines with interim and final transcripts, chunk inserts returning 201, `Stored version 11`, then a second session starting cleanly and transcribing again]
 
 **Action taken:** **ASR is fixed — confirmed live by the user's own log**, closing out the failure that ran from Prompt 72 to here. The log shows the full intended sequence: mic released → `startTranscribing` → continuous interim updates → `final=true` → 201 on the `session_captures` insert. Critically it also shows a *second* session, after `Stored version 11`, starting cleanly and transcribing again — direct confirmation that the `isListening`-reset-on-stop bug caught during Prompt 79 was real and is handled; without it that second session would have silently opened no mic at all.
@@ -552,7 +530,7 @@ Verified: recompiled clean, refreshed with zero new errors on scene load.
 
 ---
 
-**Prompt 82:**
+**Prompt 46:**
 > Your name only in english entry can we restrict the ASR to english?
 
 **Action taken:** Confirmed directly in `Support/StudioLib.d.ts` that `AsrModule.AsrTranscriptionOptions` has no language field at all — only `silenceUntilTerminationMs`, `mode`, and the two events — and traced the name field's mic down through its actual call stack (`TextInputField` → `VoiceInputButton` → `AsrModule`) to confirm none of them expose one either. So dictation genuinely cannot be pinned to English at the source, in this field or anywhere else in the app; this reconfirms what was already found for `StickyNote`'s translate feature earlier in the build.
@@ -563,7 +541,7 @@ Verified: recompiled clean, refreshed with zero new errors on scene load (the wa
 
 ---
 
-**Prompt 84:**
+**Prompt 47:**
 > Auto link the images to the text properly in the main transcription on the summary the capture of that particular image during the session recording goes to that exact like, we (n) to navigate from images to test right now we need a image btn tiny btn next to the (n) which will acts as the hyper link and open the image in the viewer even if the image viewer is closed.
 
 **Action taken:** The reverse link (Image Viewer Prev/Next → jump to that photo's "(N)" marker in the summary) already existed (`jumpToMarker()`, from Prompt 28). This adds the direction the user asked for: text marker → open that exact photo, even if the Image Viewer isn't currently open.
@@ -580,7 +558,7 @@ Verified: recompiled clean, refreshed with zero new errors on scene load. **Coul
 
 ---
 
-**Prompt 85:**
+**Prompt 48:**
 > also while recording it is showing live transcript right whne i click the capture btn it stops the transcription or fails to show it it instead it shows the text image captured fix that. may be we can have the captured notification as seperate in the top of the panel
 
 **Action taken:** Not an ASR bug — narration itself was never actually interrupted by a Capture tap; `captureImage()` and the live-transcript caption (Prompt 80/81) were simply writing to the same `statusText` field, so every "Camera warming up...", "Captured image N", or "Capture failed" message overwrote whatever narration was on screen, with nothing to tell the technician transcription was still quietly running underneath.
@@ -591,7 +569,7 @@ Verified: recompiled clean, refreshed with zero new errors on scene load.
 
 ---
 
-**Prompt 86:**
+**Prompt 49:**
 > as soon as i stop the session and go to version history it doesnt show the latest uploaded one. also the transcript doesnt show the image btns or the (1) we have to add or edit the raw transcription with this.
 
 **Action taken:** Two independent fixes.
@@ -603,7 +581,7 @@ Verified: recompiled clean, refreshed with zero new errors on scene load.
 
 ---
 
-**Prompt 90:**
+**Prompt 50:**
 > Create a hand menu with start stop record, camera icon btn shown when work session panel is open
 > Create a hand menu  with 4 kinda notes when the sticky note panel is open.
 > The hand menu when session also has a ask AI btn where we can ask doubts to the AI
@@ -621,7 +599,7 @@ Verified: recompiled clean, refreshed with zero new errors on scene load. Querie
 
 ---
 
-**Prompt 95:**
+**Prompt 51:**
 > [3 screenshots — real on-device/live camera captures (a real desk, laptop keyboard, backpack visible, not Lens Studio's virtual scene), taken moments apart, showing the SAME sticky-note hand menu rendering at wildly different apparent angles: upright-to-the-desk while looking down at a laptop, level while looking at a shelf, and rotated into a ~45° diamond in a third] it goes to differenyt angle we see up or down or straigh with the cam
 
 **Action taken:** These screenshots weren't attached as images directly — found and read them from `~/Desktop` by filename after confirming they weren't inline. They're genuinely on real hardware (not Lens Studio Preview), confirming `HandAttach`'s fallback branch runs on-device too, whenever a hand isn't currently tracked, not just in the editor as its own naming/comments had assumed.
@@ -634,7 +612,7 @@ Verified: recompiled clean, refreshed with zero new errors on scene load. **Coul
 
 ---
 
-**Prompt 96:**
+**Prompt 52:**
 > it is in lens studio previous the issue is it rotates based on which angle we look fixing that should do good
 
 **Action taken:** Corrected: those screenshots were Lens Studio Preview's live webcam-passthrough background (not a separate physical device), and "which angle we look" is mouse-drag orbit inside the Preview panel — which directly rotates the same `Camera Object` `HandAttach.cameraObject` reads from. That meant, unlike Prompt 95's own conclusion, this WAS directly reproducible and verifiable without a real device — worth actually doing rather than asserting once more.
@@ -645,7 +623,7 @@ This is the first hand-menu screen-lock claim in this thread backed by an actual
 
 ---
 
-**Prompt 100:**
+**Prompt 53:**
 > the image viewer panel should open in left or right to the summary report panel, when the image loades it just shows default picture, we need the loading animation there, similarly we can put that animation to the translate , or AI.
 
 **Action taken:** Three related changes.
@@ -658,7 +636,7 @@ Verified live: recompiled clean, refreshed with zero new errors (one unrelated `
 
 ---
 
-**Prompt 104:**
+**Prompt 54:**
 > [screenshot — Version History's dropdown open, showing v15/v14/v12/v11 as plain floating text with no visible background, overlapping and blending into the panel's own Summary/Transcript content behind it] now the version drop down is overlapping with the panel. so me the dropdown forward and have a colored dropdown background
 
 **Action taken:** Traced the actual cause by reading `SpectaclesUIKit`'s `Dropdown.ts` directly rather than guessing: the drawer's own background rectangle exists and is created correctly, but defaults to `DropdownDrawerGray` — Snap's stock theme color, low-contrast and easy to read as "no background at all" against this panel's cream paper skin, exactly matching the screenshot.
@@ -669,7 +647,7 @@ Verified live: recompiled clean, refreshed with zero new errors. Navigated to Ve
 
 ---
 
-**Prompt 105:**
+**Prompt 55:**
 > now lets focus on the AI panel. it doesnt transcribe what im saying then i couldnt stop the mic btn it kept on saying recording. now make the mic button a lot below and can we have context area currently we have the latest summary report right. along with mic we can have a small camera btn which will be added with the voice prompt. the context area we can drop some sticky notes i dont know somehow without moving from its original position. and a version serlector for both summary and raw transcription seperate but we need to be able to select multiple version from both of it
 
 **Action taken:** Full rewrite of `SessionContextPanel.ts` (the "Ask AI" panel), five parts.
@@ -688,7 +666,7 @@ Found and fixed one real bug while verifying: the mic and camera buttons were on
 
 ---
 
-**Prompt 106:**
+**Prompt 56:**
 > also when mic is stopped it is sent to AI we need a btn to make it manually go to ai. camera warming up the message should also appear on the hand menu also because we do that in session recording sometimes it may be missed
 
 **Action taken:** Two parts.
@@ -702,7 +680,7 @@ Verified live: recompiled clean both times. **Hand-menu mirroring confirmed work
 
 ---
 
-**Prompt 107:**
+**Prompt 57:**
 > how do we give the notes as context manually instead of everything there
 
 **Action taken:** Added a third multi-select dropdown — **Notes** — matching the existing Summary/Transcript pattern, so sticky notes are opt-out rather than always-everything.
@@ -717,7 +695,7 @@ Verified live: recompiled clean. Navigated to Ask AI and confirmed the new "Note
 
 ---
 
-**Prompt 108:**
+**Prompt 58:**
 > make the summary and transcript dropdown to front in z axis as it colles with the note below, and the selected ones needs to be marked in green on all three
 
 **Action taken:** Two fixes on `SessionContextPanel.ts`, both confirmed live this time (the exact multi-select gap flagged as unconfirmed in Prompt 107).
@@ -729,7 +707,7 @@ Verified live: recompiled clean. Opened the Summary dropdown with Notes visible 
 
 ---
 
-**Prompt 111:**
+**Prompt 59:**
 > you left one your name area. except for the name all three should have a incremental phrases as everything is a long record all the three you mentioned. if user wants edit the spoken content have a edit icon btn at the top right or next to ask ai where ever we get a proper space ion these 3 so it open the keybord, but how will i move the test cursor whereever i want do we need our own popup panel for edit text where we move text cursor between words or select few words with a pinch and drag gesture
 
 **Action taken:** Three parts.
@@ -744,7 +722,7 @@ Verified live: recompiled clean both times. **Structurally confirmed** both new 
 
 ---
 
-**Prompt 112 (follow-up to 111):**
+**Prompt 60 (follow-up to 59):**
 > Consolidate to one editable buffer per session — asked directly via a clarifying question about how SessionRecorder's edit control should reconcile with narration already saved to Supabase, since (unlike a note or a question) it's a live, still-recording transcript backed by many small per-phrase rows.
 
 **Action taken:** Extended the same pattern to `SessionRecorder.ts`, plus a real, previously-invisible bug found and fixed along the way.
@@ -759,7 +737,7 @@ Verified live end-to-end, successfully this time: recompiled clean. Confirmed th
 
 ---
 
-**Prompt 113:**
+**Prompt 61:**
 > in work session can we move the edit button to somewhere top right cornor?
 
 **Action taken:** Moved `TranscriptEditButton` in `SessionRecorder.ts` from floating mid-panel (just above the transcript viewport, at local `(8.2, 0.25)`) to the panel's actual top-right corner — local `(8.9, 11.1)`, mirroring `menuButton`'s own authored top-left corner spot (`(-8.9, 11.1)`) exactly, same row as the "Work Session" header.
@@ -768,7 +746,7 @@ Verified live: recompiled clean, navigated to Work Session, captured `Snap.Plugi
 
 ---
 
-**Prompt 114:**
+**Prompt 62:**
 > we need to upload to supabase for every minute in session recording instread of every phrase. in sticky notes we dont do that right? uploaded only once?
 > while recording if i go back with back button what happens in all the three ASR areas?
 
@@ -787,7 +765,7 @@ Verified live: recompiled clean. Ran a full Start → Stop cycle on Work Session
 
 ---
 
-**Prompt 115:**
+**Prompt 63:**
 > yes add auto stop for these and the text should be gone too. it should give a warning popup if the transcription running or we have a actual text there after transcription so they can know
 
 **Action taken:** Built the app's first modal — a reusable `ConfirmPopup` — and wired it into both panels flagged in Prompt 114.
@@ -800,7 +778,7 @@ Verified live end-to-end for both panels, not just structurally: started Ask AI'
 
 ---
 
-**Prompt 116:**
+**Prompt 64:**
 > now on session recorder we have a edit button right? it is difficult for us to navigate to the text we want to edit as it is single line panel displayed hard to move so can we do something custom in it so it will be navigate through parah we can do that in our scroll text too. one more thing is in scroll text as we speaks it increaments right? i need you to keep auto move the scroll text as it goes below
 
 **Action taken:** Two independent fixes to `SessionRecorder.ts`, both confirmed by reading SDK source before touching anything.
@@ -814,7 +792,7 @@ Verified live: recompiled clean. Reproduced the crash on a genuinely fresh scene
 
 ---
 
-**Prompt 117:**
+**Prompt 65:**
 > after stopping session the text disappears. i dont need it to disappear unitl going back or clicking the start session again it should erase the text. also the edit btn should appear only when session is stopped. if im going to edit it and close edit panel it should save to db, when nothing is changed it doesnt upload to DB
 
 **Action taken:** Three behavior changes to `SessionRecorder.ts`.
@@ -827,7 +805,7 @@ Verified live end-to-end on a fresh scene: started a recording, stopped it, conf
 
 ---
 
-**Prompt 118 (bug report, with screenshot):**
+**Prompt 66 (bug report, with screenshot):**
 > text input area is empty when i tried to edit in session record mode
 
 **Action taken:** Root-caused and fixed a real bug in the Prompt 116/117 work — the Edit field opened with the narration visibly still sitting in the read-only view and "Session saved" on screen, but the edit box itself showed nothing.
@@ -840,7 +818,7 @@ Verified live via direct scene state query (not just a screenshot, since the Pre
 
 ---
 
-**Prompt 119 (bug report, with screenshot):**
+**Prompt 67 (bug report, with screenshot):**
 > text inside it is a bit big
 
 **Action taken:** One-line fix in `SessionRecorder.ts` — `TextInputArea`'s own default font size (96, meant for a short single line) was never overridden, dwarfing the read-only transcript view's 34 and showing only a couple of words at a time. Set `this.editField.fontSize = 34` and `this.editField.fontFamily = BODY_FONT` to match the read-only view exactly.
@@ -849,7 +827,7 @@ Verified live: recompiled clean, redid the full Start → narrate → Stop → E
 
 ---
 
-**Prompt 125 (with screenshot of RemoteServiceGatewayCredentials showing real tokens):**
+**Prompt 68 (with screenshot of RemoteServiceGatewayCredentials showing real tokens):**
 > [Image] do we remove this when uploading? also what is this spkDebug_key, we need to move the md files that only i need to the desktop. plus [Image] we need to only have single add button that will create a field with all the 4 values are clubbed together. also have a waring add custom location to scene object before adding and running onboarder.
 
 **Action taken:** Found a genuine, serious secret leak the user caught by eye that no earlier grep-based audit had found — the OpenAI/Google/Snap tokens on `RemoteServiceGatewayCredentials` aren't in any `.ts` source file, they're serialized directly inside `Assets/Scene.scene`, which was already sitting in the (unpushed) commit history. Explained `spk_debug_key.pem` is just the local device-signing private key (already `.gitignore`d, never tracked) — a smaller, already-handled question.
@@ -858,7 +836,7 @@ Given the token leak, asked a direct confirm-before-destructive-action question 
 
 ---
 
-**Prompt 126:**
+**Prompt 69:**
 > I'm yet to record the video should we remove now or it is removed and stored seperately
 
 **Action taken:** Answered the sequencing question, then executed the full fix — the same pattern already proven for `SupabaseConfig.ts` (real values live locally, placeholders go in what's committed), adapted for a native scene component's serialized data (which can't be split into a separate git-ignored file the way a `.ts` constant can):
@@ -877,7 +855,7 @@ Verified live: Inspector screenshot confirmed the single "Sites" list with one "
 
 ---
 
-**Prompt 127 (with screenshot of the Inspector):**
+**Prompt 70 (with screenshot of the Inspector):**
 > [Image] it needs single add button but 4 text inputs name id, lat and long anything if we missed
 
 **Action taken:** Confirmed the `@typedef` rework from Prompt 126 actually renders correctly in the Inspector — one "Sites" list, one "+ Add Value" button, each entry expanding to Site Name / Latitude / Longitude / Custom Location Id together. Updated `README.md`'s onboarding step to describe the new field labels.
@@ -886,7 +864,7 @@ Verified live: selected the `SiteOnboarder` object and screenshotted the Inspect
 
 ---
 
-**Prompt 129:**
+**Prompt 71:**
 > can we make the whole menu scene come in front of us? when entered in lens
 
 **Action taken:** Every top-level panel (Name/Site/Menu/Notes/Session/History/AskAI, plus ImageViewer) was authored at a fixed world position, assuming the camera always starts at the world origin facing -Z. `PanelManager` now re-anchors the whole panel group, once at boot, to the camera's actual current pose — same relative arrangement between panels, just centered on wherever the technician (or, in Preview, wherever the simulated camera) really is.
@@ -897,7 +875,7 @@ Verified live, including under a real stress case: this Preview session's camera
 
 ---
 
-**Prompt 130 (bug report, with screenshot):**
+**Prompt 72 (bug report, with screenshot):**
 > [Image] text gets wierdly cutout
 
 **Action taken:** Real root cause, found via the actual engine log rather than guessed at length first. Reproduced on Oakview Substation (29 recorded sessions by that point): the Ask AI Summary dropdown's drawer rendered rows well past its own masked viewport, garbling together with the Notes row/status text/buttons below it. Chased this for a while through `Dropdown.ts`'s pool-mode internals (parallel-array vs struct theories, `poolItemStep`/`windowHeight` staleness theories) before the actual answer surfaced in a routine log check: `"DropdownScroll : Maximum of 8 masking components."` — Lens Studio hard-caps simultaneous `MaskingComponent`s scene-wide, and every open dropdown drawer, sticky note body, and the site list all compete for that same budget of 8.
@@ -908,7 +886,7 @@ Verified live on the exact broken case: same 29-version site, Summary drawer now
 
 ---
 
-**Prompt 131:**
+**Prompt 73:**
 > in ask ai the notes summary and transcript is not reloaded when open we fixed this bug in the vesrion history. next is even though i got output from AI when i click back it shows the warning for us to leave.
 
 **Action taken:** Two real bugs, both traced to their exact line before touching anything.
