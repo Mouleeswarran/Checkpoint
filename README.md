@@ -74,12 +74,3 @@ A site with a name but no Custom Location wired yet still shows up in the picker
 ### 6. Extended Permissions
 
 Running Internet + Camera + Audio together (which this Lens does) requires Extended Permissions — configure this in Lens Studio's project settings before testing on-device.
-
-## Renaming the project
-
-`scripts/rename-project.sh "NewName"` swaps every user-facing "Checkpoint" string (main menu header, wordmark, welcome text, AI persona, and this README) to a new name in one shot, then commits.
-
-- Add `--push` to push automatically; omit it to just rename + commit locally.
-- Add `--rename-repo` (with `--push`) to also rename the GitHub repo via `gh repo rename` — this changes the clone URL, so use it deliberately.
-- It does **not** touch `Assets/Scripts/Leaf/**` (test scenario class/file names), `supabase/migrations/**` (applied migrations), or `CLAD_PROMPT_LOG.md` (historical log) — see the script's own header comment for why.
-- It does **not** set Lens Studio's own internal Lens name (`CLADWeek3.esproj`'s `lensName` field, shown in the Project Info panel) — there's no CLI for that field; set it in Lens Studio's Project Info panel, or ask Claude to set it via the Editor API (`Editor.Model.MetaInfo.lensName`).

@@ -4,17 +4,110 @@ This file tracks the prompts used to build this project with Claude/CLAD, as req
 
 Hackathon: https://lenslist.co/clad-summer-hackathon#overview
 Week 3 theme: **Connect** — build a spatial experience that connects people, platforms, or everyday communication workflows.
-Submission deadline: Sunday night PT (Aug 30, 2026).
 
-Prompts below are stored **verbatim**, exactly as typed in chat — no summarizing or shortening.
-
-**Note on this file:** this is a curated selection of 62 prompts — every one that directed real work on the Lens Studio project (a feature built, a bug fixed, a script/scene/schema change made). Early-stage concept/architecture brainstorming, naming discussion, and prompts asking for a recommendation rather than directing a build are left out, along with prompts about repo/submission logistics (renaming, privacy redaction, README/doc restructuring, git push) and video/demo-script writing, since none of those touch the Lens Studio project itself. Original prompt numbers are kept as-is (so a numbering gap just means an entry was trimmed, not that anything is missing or broken) — order matches how the entries originally appeared in this file.
+**Note on this file:** a curated selection of 76 prompts — the full concept/architecture arc that shaped this project (naming, the Custom Locations vs. GPS decision, why Spatial Anchors and custom ML were both considered and ruled out) plus every prompt that directed real work on the Lens Studio project (a feature built, a bug fixed, a script/scene/schema change made). Left out: prompts about repo/submission logistics (renaming, privacy redaction, README/doc restructuring, git push) and video/demo-script writing, since none of those touch the Lens Studio project itself. Original prompt numbers are kept as-is (so a numbering gap just means an entry was trimmed, not that anything is missing or broken) — order matches how the entries originally appeared in this file.
 
 ---
 
 ## Log
 
 ### 2026-08-25
+**Prompt 1:**
+> https://lenslist.co/clad-summer-hackathon#overview we are going to build for week 3 challenge. what are the things we need for submission, and as we go you need to store these prompts in the seperate file. now we need a idea to start building
+
+**Action taken:** Fetched hackathon page, summarized Week 3 requirements and submission checklist, created this log file, and began brainstorming lens concepts for the "Connect" theme.
+
+---
+
+**Prompt 2:**
+> we are going to brain strom the idea it should be helful for different field professionals
+
+**Action taken:** Presented 6 concept directions oriented around field professionals (Remote Expert Assist, Shift Handoff Board, Asset/Equipment Memory, Live Field-to-Dispatch Status, On-Site Team Punch List, Cross-Language Field Interpreter).
+
+---
+
+**Prompt 3:**
+> we are going to build a lens that will act as a version control for the physical world,i can be a mechanic, electrician, plumber or AC mechanic or TV installer, or any kind of profession that does physical work. can add a sticky note what is impoertant or a warning may be. we need to put a list of sticky notes type with warning, plain, danger or even more types of sticky notes, also after pasting the sticky notes to the world anchor point we need to spawn a mic button with ASR module. and for the existing notes there we can tear it and also have a translate button which translates the text to different language but it is temporary english will be the permananet version. now comes the main thing, version control aka git this will start with a button record button but doesnt record video rather than, it gives us a session in bwtween this we can use image capture for future references and we can voice capture as user does a work and explaing what is he doing. this content is sent to AI and stored as a session summary record file or whatever we going to call it. if next person going to the same space and work on there they can view the sticky notes or the summary notes. we need a system prompt for the AI to have a general summary of the session in it. if any equipement mentioned or any use of particular product that is displayed in the summary report as bulletin, even the parts changes there. we need to store all the versions of summary report. also a new person is going to the site or the place, when session starts or before that the summary of previous session is loaded by the user, we will have a AI button that will read the report or summary when i ask a question the previous session summary is our context also it is the context for the new session will record and send to AI for new summary report.
+> this will act as Leave a note, it will act as  expert assist but across the timeline of the whole thing is worked on. a connect app that connects to the past,also works as a shift standoff board, equipment memory
+> before developing we need to discuss the technical scope of this project and come up with a propername
+
+**Action taken:** Broke the concept into a Lens Studio/Specs technical architecture (Custom Locations for persistent site anchoring, ASR for voice notes/narration, Camera capture for reference images, Remote Service Gateway/LLM for session summarization + translation, Snap Cloud/Supabase for versioned storage, SIK gestures for note placement/deletion) and proposed an MVP cut vs. stretch scope, plus a shortlist of project names, for user decision.
+
+---
+
+**Prompt 4 (question/answer selections):**
+> Which name for this project? → **Checkpoint**
+> Should we lock the MVP scope as described (single pre-scanned location, typed sticky notes + ASR + tear gesture, one record→AI-summarize→store cycle, prior-version context load) and treat translate + multi-version timeline as stretch goals? → "we need all the concepts working, tear geature is not needed it is just a delete button this only applies on the sticky notes. we need to discuss about scanned location"
+
+**Action taken:** Locked project name **Checkpoint**. Noted that all concepts (sticky notes, ASR, translate, versioned record→summarize→store, cross-session AI context) must be working — no stretch-cutting. Replaced "tear" gesture with a simple delete button on sticky notes. Flagged the scanned-location (Custom Locations) mechanic for further discussion.
+
+---
+
+**Prompt 5:**
+> we still need to discuss the location is there a way to make it work on multiple location with gps positioning and load the scene there is that a  possibility?
+> we also need a seperate supabase not the snapcloud version as i dont have access. we have to decide this first
+
+**Action taken:** Explained GPS-based multi-site registration as an alternative/complement to Custom Locations (auto-registers a new site by coordinates on first visit, avoids a pre-scan step per site), noted the GPS accuracy trade-off vs. Custom Locations' cm-precision, and confirmed a separate (non-Snap-Cloud) Supabase project is usable directly via `InternetModule.fetch()` REST calls (PostgREST + Storage API), no Snap Cloud SDK/access required. Flagged that Internet + Location + Camera + Audio running together requires Extended Permissions.
+
+---
+
+**Prompt 6 (question/answer):**
+> For sticky notes: on a return visit to a site (different day), should notes reappear pinned to their original real-world spot (not reliably possible with GPS-only precision) or surface as a nearby list/panel tied to the site instead? → "we also need to anchor it to similar position for eg we may have 5 pipes there. there is a change the notes can misplace with the pipes"
+
+**Action taken:** Proposed a hybrid architecture: GPS for site-level lookup (auto-detect/register which job site the user is at) + Custom Locations scan for precise, per-object (e.g. per-pipe) anchoring within a site, chained together via a Supabase-stored mapping from GPS coordinates to that site's Custom Location ID. Flagged this as two location subsystems instead of one, increasing build scope.
+
+---
+
+**Prompt 7:**
+> also store my propmts exactly as i put in chat no summaries or cut short, rectify the precious prompts stored in @ClAD_PROMPT_Log.
+> second is I'm ok with this acritecture, i want to know if it is possible to load different custom loactions in single lens or is it needed that we need to create that lens with the custom location inbuild?
+
+**Action taken:** Rewrote this log to store all prior prompts verbatim (this rewrite). Locked the GPS + Custom Locations hybrid architecture. Researched the Lens Scripting API (`Support/StudioLib.d.ts`) and confirmed: `LocatedAtComponent.location` is runtime-writable, so one Lens can dynamically swap between Custom Locations via `LocationAsset.fromSerialized()` fed by our own Supabase (no Snap Cloud dependency needed). Confirmed scanning a brand-new site still requires Snap's separate Custom Locations Lens app on-device (the in-Lens `MappingSession` scanning API is deprecated with no runtime replacement).
+
+---
+
+**Prompt 8:**
+> I'm ok with the technician scanning the store and how would we go to our site with our lens and access the scanned location. with the ID it gives should i enter it first time we setup the site will the site load and store the value in DB and then the positions of the notes and everything? then on second time it loads the scan based on gps and anchors the notes?
+
+**Action taken:** Discovered the earlier Custom Locations answer was wrong for this workflow — Location ID entry is Editor-only/pre-publish per official docs, not something a running Lens can accept from a user live on-device. Researched and proposed a replacement: the separate **Spatial Anchors** system (`AnchorModule`/`AnchorSession`/`WorldAnchor`), which allows creating a persistent world anchor entirely at runtime from within Checkpoint itself (`createWorldAnchor`), scoped to a developer-chosen `area` string (our own site ID), removing the need for the separate Custom Locations app or manual ID entry. Flagged one open unknown: whether cross-device anchor persistence (Tech A's device → Tech B's different device) requires Snap Cloud account access the user said they lack.
+
+---
+
+**Prompt 9:**
+> we need to definetly confirm that it is accessible across devices otherwise the whole concept is no brainer
+
+**Action taken:** Confirmed via direct read of `Support/StudioLib.d.ts` that Snap's native `StorageScope` enum has only `User` (private) and `Session` (live multiplayer only) — no scope supports async cross-device data sharing, regardless of account access. This rules out Spatial Anchors (`WorldAnchor`) for cross-visit precision anchoring. Also confirmed no runtime API exists to bind an arbitrary Location ID string to a `LocationAsset` — `locationId` is Editor-API-only. Concluded: new-site onboarding must be a deliberate one-time Editor/republish step (industry-normal for B2B field AR); GPS auto-selects among already-onboarded sites for frictionless daily use; Custom Locations still gives full precision once onboarded, since published Location IDs are public on Snap's servers independent of the storage-scope limitation. User agreed to this architecture.
+
+---
+
+**Prompt 10:**
+> group or standalsone we have to setup in the editor right? got it. since now it has become like B2B is it good for our challenge? as the specs are targetting mass market will that be a criteria, if so should we explore any custom ML flow
+
+**Action taken:** Confirmed both Custom Location Group (capped at 5, must be <20m apart — not applicable to scattered sites) and standalone duplicated Custom Location nodes are Editor-setup only, with no documented numeric cap on standalone nodes. Addressed the strategic question of B2B/field-professional fit vs. mass-market positioning against the actual judging criteria (50% CLAD execution / 25% UX / 25% creativity & usefulness — no stated mass-market requirement) and recommended keeping the field-professional direction, with custom ML treated as optional polish rather than a required pivot.
+
+---
+
+**Prompt 11:**
+> I'm good to go with this direction. before starting i just have to look at the posibilites of using Custom ML to identify a space and use anchors to position it how difficicult it is and complex even if host the cutom ML hosted seperately that will help us reanchor. we ask professional for the space recorded and we use ML to anchor everything?
+
+**Action taken:** Assessing feasibility/complexity of replacing or augmenting Custom Locations with a custom (possibly separately-hosted) ML pipeline for space identification and object-level re-anchoring, to decide whether it belongs in the build. Recommended keeping ML as a thin optional assist (site-level confirmation via vision-LLM) rather than replacing Custom Locations, given the object-level precision requirement.
+
+---
+
+**Prompt 12:**
+> i thought of using ML for anchor marking is that not possible? i thought this should replace custom location
+
+**Action taken:** Explained precisely what replacing Custom Locations with custom ML would actually require (a from-scratch visual relocalization/VPS pipeline: reference mapping, feature matching, pose estimation, coordinate-frame integration) and why it's technically possible but a much harder, higher-risk undertaking than any other piece of this project — comparable to rebuilding what Snap's own engineers already built for Custom Locations, not a simple API swap.
+
+---
+
+**Prompt 13:**
+> let's stick with Custom Locations, start build planning
+
+**Action taken:** Architecture finalized. Moved into build planning — drafted and got approval on a full build plan covering Supabase schema, packages to install, scene/script structure, and a 9-phase incremental build order (saved to a local plan file). Confirmed defaults: manual (button-press) image capture during sessions, and simple name-entry technician identity (no login/accounts).
+
+---
+
 **Prompt 15:**
 > [Supabase project ref] project ID can you access my DB and setup the RLS
 
@@ -28,6 +121,13 @@ Prompts below are stored **verbatim**, exactly as typed in chat — no summarizi
 **Action taken:** Received the publishable key. Verified via REST call that the schema has not been applied yet (404 on `sites`). Found the Supabase CLI is already authenticated on this machine but to a different account (its project list doesn't include this project) — confirmed via `supabase link`, which failed with a privileges error. Asked the user to either run the migration SQL directly in the Supabase Dashboard SQL Editor, or log the CLI into the correct account.
 
 **Follow-up (same phase):** Verified the migration applied (200 OK on `sites`). Installed Lens Studio packages: Custom Location AR, Remote Service Gateway, and a pre-built SupabaseClient package (a polyfilled `supabase-js` runtime for Lens Studio). Investigated the SupabaseClient package's actual contents and found it bundles two distinct things: a Snap-Cloud-specific editor provisioning plugin (not needed — user has their own Supabase project) and the generic `createClient(url, key)` runtime client (exactly what's needed). Wrote `Assets/Scripts/Backend/SupabaseClient.ts` using the generic client directly against the user's project, skipping Snap Cloud's Snapchat-auth flow entirely since Checkpoint has no login system and RLS is scoped to the `anon` role. Installed a missing `Utilities` package dependency RSG needed. Verified full TypeScript compile succeeds.
+
+---
+
+**Prompt 21:**
+> if we are going to go with few custom location why gps remove it is good right?
+
+**Action taken:** Agreed with the simplification — recommended dropping live GPS site-matching in favor of a manual site picker, given only a handful of pre-onboarded sites are realistic for the hackathon timeline. Updated the build plan file accordingly (architecture, package list, scene structure, phased build order, schema notes).
 
 ---
 
