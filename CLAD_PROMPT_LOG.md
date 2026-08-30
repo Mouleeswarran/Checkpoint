@@ -5,7 +5,7 @@ This file tracks the prompts used to build this project with Claude/CLAD, as req
 Hackathon: https://lenslist.co/clad-summer-hackathon#overview
 Week 3 theme: **Connect** — build a spatial experience that connects people, platforms, or everyday communication workflows.
 
-**Note on this file:** a curated selection of 71 prompts, renumbered sequentially in the order they happened — the full concept/architecture arc that shaped this project (naming, the Custom Locations vs. GPS decision, why Spatial Anchors and custom ML were both considered and ruled out) plus every prompt that directed real work on the Lens Studio project (a feature built, a bug fixed, a script/scene/schema change made). Left out: prompts about repo/submission logistics (renaming, privacy redaction, README/doc restructuring, git history/push), the RemoteServiceGateway credential leak and its fix, and video/demo-script writing, since none of those touch the Lens Studio project's actual features. A prompt number mentioned inside another entry's own text (e.g. "the same bug as Prompt 40") refers to that prompt's original number from the full build session, not this file's renumbering — most such references predate this file's own curation and were never meant to be a clickable index.
+
 
 ---
 
