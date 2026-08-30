@@ -1,0 +1,46 @@
+- !<AssetImportMetadata/a0a3c9bf-2030-4f6d-a941-cec8caca50ea>
+  ImportedAssetIds:
+    TypeScriptAsset: !<reference> 7f197b55-75ac-4e1b-9387-f96ee6d75919
+  ImporterName: TypeScriptAssetImporter
+  PrimaryAsset: !<reference> 7f197b55-75ac-4e1b-9387-f96ee6d75919
+  PackageType: NotAPackage
+  LegacyPackagePolicy: ~
+  ExtraData:
+    {}
+  AssetDataMap:
+    TypeScriptAsset: !<own> 2fa07736-97c5-4666-9ace-68ae39433025
+  DependentFiles:
+    []
+  ImporterSettings: !<AssetImporterSettings>
+    {}
+  CompressionSettings: !<own> 00000000-0000-0000-0000-000000000000
+- !<TypeScriptAssetData/2fa07736-97c5-4666-9ace-68ae39433025>
+  SvgIcon: ""
+  SetupScript:
+    code: ""
+  Description: ""
+  VersionMajor: 0
+  VersionMinor: 0
+  VersionPatch: 0
+  VersionPrerelease: ""
+  UpdateOrder: 0
+  ComponentUid: f023771f-60f3-4923-a349-f60f30832318
+  ExportUid: 00000000-0000-0000-0000-000000000000
+  PackagePolicy: CanBeUnpacked
+  ScriptInputsHidden:
+    sessionRecorder: false
+  ScriptTypesHidden:
+    {}
+  ReadMe: !<reference> 00000000-0000-0000-0000-000000000000
+  DeclarationFile: !<reference> 00000000-0000-0000-0000-000000000000
+  Tags:
+    []
+  Attachments:
+    []
+  DefaultScriptInputs:
+    - sessionRecorder: !<MappingBased.AssignableType_1> 00000000-0000-0000-0000-000000000000
+  ScriptTypes:
+    -
+      {}
+  InputLines:
+    - // @input AssignableType_1 sessionRecorder

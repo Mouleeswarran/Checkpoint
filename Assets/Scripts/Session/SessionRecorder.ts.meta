@@ -1,0 +1,73 @@
+- !<AssetImportMetadata/5c14a6a8-7581-4735-8172-d5dd6b5a56e7>
+  ImportedAssetIds:
+    TypeScriptAsset: !<reference> 93f1f560-42bd-404a-b76c-6c300e997eed
+  ImporterName: TypeScriptAssetImporter
+  PrimaryAsset: !<reference> 93f1f560-42bd-404a-b76c-6c300e997eed
+  PackageType: NotAPackage
+  LegacyPackagePolicy: ~
+  ExtraData:
+    {}
+  AssetDataMap:
+    TypeScriptAsset: !<own> 6d53536a-a9fe-4118-8be1-39271571e7d1
+  DependentFiles:
+    []
+  ImporterSettings: !<AssetImporterSettings>
+    {}
+  CompressionSettings: !<own> 00000000-0000-0000-0000-000000000000
+- !<TypeScriptAssetData/6d53536a-a9fe-4118-8be1-39271571e7d1>
+  SvgIcon: ""
+  SetupScript:
+    code: ""
+  Description: ""
+  VersionMajor: 0
+  VersionMinor: 0
+  VersionPatch: 0
+  VersionPrerelease: ""
+  UpdateOrder: 0
+  ComponentUid: a3f99c63-6bf1-4148-8767-b086dbce4857
+  ExportUid: 00000000-0000-0000-0000-000000000000
+  PackagePolicy: CanBeUnpacked
+  ScriptInputsHidden:
+    captureButton: false
+    captureButtonLabel: false
+    headerText: false
+    menuButton: false
+    menuButtonLabel: false
+    recordButton: false
+    recordButtonLabel: false
+    sitePicker: false
+    statusText: false
+    workSessionHandMenu: false
+  ScriptTypesHidden:
+    {}
+  ReadMe: !<reference> 00000000-0000-0000-0000-000000000000
+  DeclarationFile: !<reference> 00000000-0000-0000-0000-000000000000
+  Tags:
+    []
+  Attachments:
+    []
+  DefaultScriptInputs:
+    - sitePicker: !<MappingBased.AssignableType_1> 00000000-0000-0000-0000-000000000000
+      workSessionHandMenu: !<MappingBased.AssignableType_2> 00000000-0000-0000-0000-000000000000
+      headerText: !<reference.Text> 00000000-0000-0000-0000-000000000000
+      menuButton: !<MappingBased.AssignableType_3> 00000000-0000-0000-0000-000000000000
+      menuButtonLabel: !<reference.Text> 00000000-0000-0000-0000-000000000000
+      recordButton: !<MappingBased.AssignableType_4> 00000000-0000-0000-0000-000000000000
+      recordButtonLabel: !<reference.Text> 00000000-0000-0000-0000-000000000000
+      captureButton: !<MappingBased.AssignableType_5> 00000000-0000-0000-0000-000000000000
+      captureButtonLabel: !<reference.Text> 00000000-0000-0000-0000-000000000000
+      statusText: !<reference.Text> 00000000-0000-0000-0000-000000000000
+  ScriptTypes:
+    -
+      {}
+  InputLines:
+    - // @input AssignableType_1 sitePicker
+    - // @input AssignableType_2 workSessionHandMenu
+    - // @input Component.Text headerText
+    - // @input AssignableType_3 menuButton
+    - // @input Component.Text menuButtonLabel
+    - // @input AssignableType_4 recordButton
+    - // @input Component.Text recordButtonLabel
+    - // @input AssignableType_5 captureButton
+    - // @input Component.Text captureButtonLabel
+    - // @input Component.Text statusText

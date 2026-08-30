@@ -1,0 +1,85 @@
+- !<AssetImportMetadata/001aa32e-6825-4055-9032-bc00af7b3f92>
+  ImportedAssetIds:
+    TypeScriptAsset: !<reference> f6aaf80c-b7fa-4947-9ef5-be45b1ff6f98
+  ImporterName: TypeScriptAssetImporter
+  PrimaryAsset: !<reference> f6aaf80c-b7fa-4947-9ef5-be45b1ff6f98
+  PackageType: NotAPackage
+  LegacyPackagePolicy: ~
+  ExtraData:
+    {}
+  AssetDataMap:
+    TypeScriptAsset: !<own> 25ddef92-e34d-4293-853a-309f30fda6f4
+  DependentFiles:
+    []
+  ImporterSettings: !<AssetImporterSettings>
+    {}
+  CompressionSettings: !<own> 00000000-0000-0000-0000-000000000000
+- !<TypeScriptAssetData/25ddef92-e34d-4293-853a-309f30fda6f4>
+  SvgIcon: ""
+  SetupScript:
+    code: ""
+  Description: ""
+  VersionMajor: 0
+  VersionMinor: 0
+  VersionPatch: 0
+  VersionPrerelease: ""
+  UpdateOrder: 0
+  ComponentUid: a3ba4504-2b8d-455f-8f93-bb9d9ea26a68
+  ExportUid: 00000000-0000-0000-0000-000000000000
+  PackagePolicy: CanBeUnpacked
+  ScriptInputsHidden:
+    detailText: false
+    headerText: false
+    imageViewer: false
+    menuButton: false
+    menuButtonLabel: false
+    nextButton: false
+    nextButtonLabel: false
+    photosButton: false
+    photosButtonLabel: false
+    prevButton: false
+    prevButtonLabel: false
+    reportPaperclip: false
+    sitePicker: false
+    versionLabel: false
+  ScriptTypesHidden:
+    {}
+  ReadMe: !<reference> 00000000-0000-0000-0000-000000000000
+  DeclarationFile: !<reference> 00000000-0000-0000-0000-000000000000
+  Tags:
+    []
+  Attachments:
+    []
+  DefaultScriptInputs:
+    - sitePicker: !<MappingBased.AssignableType_1> 00000000-0000-0000-0000-000000000000
+      imageViewer: !<MappingBased.AssignableType_2> 00000000-0000-0000-0000-000000000000
+      menuButton: !<MappingBased.AssignableType_3> 00000000-0000-0000-0000-000000000000
+      menuButtonLabel: !<reference.Text> 00000000-0000-0000-0000-000000000000
+      headerText: !<reference.Text> 00000000-0000-0000-0000-000000000000
+      versionLabel: !<reference.Text> 00000000-0000-0000-0000-000000000000
+      reportPaperclip: !<reference.Image> 00000000-0000-0000-0000-000000000000
+      prevButton: !<MappingBased.AssignableType_4> 00000000-0000-0000-0000-000000000000
+      prevButtonLabel: !<reference.Text> 00000000-0000-0000-0000-000000000000
+      nextButton: !<MappingBased.AssignableType_5> 00000000-0000-0000-0000-000000000000
+      nextButtonLabel: !<reference.Text> 00000000-0000-0000-0000-000000000000
+      detailText: !<reference.Text> 00000000-0000-0000-0000-000000000000
+      photosButton: !<MappingBased.AssignableType_6> 00000000-0000-0000-0000-000000000000
+      photosButtonLabel: !<reference.Text> 00000000-0000-0000-0000-000000000000
+  ScriptTypes:
+    -
+      {}
+  InputLines:
+    - // @input AssignableType_1 sitePicker
+    - // @input AssignableType_2 imageViewer
+    - // @input AssignableType_3 menuButton
+    - // @input Component.Text menuButtonLabel
+    - // @input Component.Text headerText
+    - // @input Component.Text versionLabel
+    - // @input Component.Image reportPaperclip
+    - // @input AssignableType_4 prevButton
+    - // @input Component.Text prevButtonLabel
+    - // @input AssignableType_5 nextButton
+    - // @input Component.Text nextButtonLabel
+    - // @input Component.Text detailText
+    - // @input AssignableType_6 photosButton
+    - // @input Component.Text photosButtonLabel

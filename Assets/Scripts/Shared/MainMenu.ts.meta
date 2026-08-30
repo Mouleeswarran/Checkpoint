@@ -1,0 +1,76 @@
+- !<AssetImportMetadata/3fe56233-10f5-4d40-a2a6-162eecd3e381>
+  ImportedAssetIds:
+    TypeScriptAsset: !<reference> c1e519f5-4e72-4d32-8aec-d58f2edb8109
+  ImporterName: TypeScriptAssetImporter
+  PrimaryAsset: !<reference> c1e519f5-4e72-4d32-8aec-d58f2edb8109
+  PackageType: NotAPackage
+  LegacyPackagePolicy: ~
+  ExtraData:
+    {}
+  AssetDataMap:
+    TypeScriptAsset: !<own> d85ba638-f9a4-4dd8-8cf0-20e98b910f39
+  DependentFiles:
+    []
+  ImporterSettings: !<AssetImporterSettings>
+    {}
+  CompressionSettings: !<own> 00000000-0000-0000-0000-000000000000
+- !<TypeScriptAssetData/d85ba638-f9a4-4dd8-8cf0-20e98b910f39>
+  SvgIcon: ""
+  SetupScript:
+    code: ""
+  Description: ""
+  VersionMajor: 0
+  VersionMinor: 0
+  VersionPatch: 0
+  VersionPrerelease: ""
+  UpdateOrder: 0
+  ComponentUid: c84f8d3c-b131-4f12-aa34-0ba0517ca149
+  ExportUid: 00000000-0000-0000-0000-000000000000
+  PackagePolicy: CanBeUnpacked
+  ScriptInputsHidden:
+    askTile: false
+    askTileLabel: false
+    headerText: false
+    historyTile: false
+    historyTileLabel: false
+    notesTile: false
+    notesTileLabel: false
+    sessionTile: false
+    sessionTileLabel: false
+    siteTile: false
+    siteTileLabel: false
+  ScriptTypesHidden:
+    {}
+  ReadMe: !<reference> 00000000-0000-0000-0000-000000000000
+  DeclarationFile: !<reference> 00000000-0000-0000-0000-000000000000
+  Tags:
+    []
+  Attachments:
+    []
+  DefaultScriptInputs:
+    - headerText: !<reference.Text> 00000000-0000-0000-0000-000000000000
+      notesTile: !<MappingBased.AssignableType_1> 00000000-0000-0000-0000-000000000000
+      notesTileLabel: !<reference.Text> 00000000-0000-0000-0000-000000000000
+      sessionTile: !<MappingBased.AssignableType_2> 00000000-0000-0000-0000-000000000000
+      sessionTileLabel: !<reference.Text> 00000000-0000-0000-0000-000000000000
+      historyTile: !<MappingBased.AssignableType_3> 00000000-0000-0000-0000-000000000000
+      historyTileLabel: !<reference.Text> 00000000-0000-0000-0000-000000000000
+      askTile: !<MappingBased.AssignableType_4> 00000000-0000-0000-0000-000000000000
+      askTileLabel: !<reference.Text> 00000000-0000-0000-0000-000000000000
+      siteTile: !<MappingBased.AssignableType_5> 00000000-0000-0000-0000-000000000000
+      siteTileLabel: !<reference.Text> 00000000-0000-0000-0000-000000000000
+  ScriptTypes:
+    -
+      {}
+  InputLines:
+    - // @input Component.Text headerText
+    - // @input AssignableType_1 notesTile
+    - // @input Component.Text notesTileLabel
+    - // @input AssignableType_2 sessionTile
+    - // @input Component.Text sessionTileLabel
+    - // @input AssignableType_3 historyTile
+    - // @input Component.Text historyTileLabel
+    - // @input AssignableType_4 askTile
+    - // @input Component.Text askTileLabel
+    - // @input AssignableType_5 siteTile
+    - // @input Component.Text siteTileLabel

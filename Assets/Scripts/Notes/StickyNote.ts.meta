@@ -1,0 +1,76 @@
+- !<AssetImportMetadata/94b91ffa-1aca-48d3-a0fd-f9035b6dc658>
+  ImportedAssetIds:
+    TypeScriptAsset: !<reference> 084f9e94-a05e-4a8c-8aba-9b3fad97e4c1
+  ImporterName: TypeScriptAssetImporter
+  PrimaryAsset: !<reference> 084f9e94-a05e-4a8c-8aba-9b3fad97e4c1
+  PackageType: NotAPackage
+  LegacyPackagePolicy: ~
+  ExtraData:
+    {}
+  AssetDataMap:
+    TypeScriptAsset: !<own> 1c02e105-4000-47c0-81b2-d0a845ecb4a8
+  DependentFiles:
+    []
+  ImporterSettings: !<AssetImporterSettings>
+    {}
+  CompressionSettings: !<own> 00000000-0000-0000-0000-000000000000
+- !<TypeScriptAssetData/1c02e105-4000-47c0-81b2-d0a845ecb4a8>
+  SvgIcon: ""
+  SetupScript:
+    code: ""
+  Description: ""
+  VersionMajor: 0
+  VersionMinor: 0
+  VersionPatch: 0
+  VersionPrerelease: ""
+  UpdateOrder: 0
+  ComponentUid: f0fcb0d4-2afe-400e-adac-0b4855b8c75b
+  ExportUid: 00000000-0000-0000-0000-000000000000
+  PackagePolicy: CanBeUnpacked
+  ScriptInputsHidden:
+    bodyText: false
+    deleteButton: false
+    deleteButtonLabel: false
+    dragHandleCollider: false
+    dragHandleManipulation: false
+    micButton: false
+    micButtonLabel: false
+    statusText: false
+    translateButton: false
+    translateButtonLabel: false
+    typeLabelText: false
+  ScriptTypesHidden:
+    {}
+  ReadMe: !<reference> 00000000-0000-0000-0000-000000000000
+  DeclarationFile: !<reference> 00000000-0000-0000-0000-000000000000
+  Tags:
+    []
+  Attachments:
+    []
+  DefaultScriptInputs:
+    - typeLabelText: !<reference.Text> 00000000-0000-0000-0000-000000000000
+      bodyText: !<reference.Text> 00000000-0000-0000-0000-000000000000
+      statusText: !<reference.Text> 00000000-0000-0000-0000-000000000000
+      micButton: !<MappingBased.AssignableType_1> 00000000-0000-0000-0000-000000000000
+      micButtonLabel: !<reference.Text> 00000000-0000-0000-0000-000000000000
+      translateButton: !<MappingBased.AssignableType_2> 00000000-0000-0000-0000-000000000000
+      translateButtonLabel: !<reference.Text> 00000000-0000-0000-0000-000000000000
+      deleteButton: !<MappingBased.AssignableType_3> 00000000-0000-0000-0000-000000000000
+      deleteButtonLabel: !<reference.Text> 00000000-0000-0000-0000-000000000000
+      dragHandleCollider: !<reference.ColliderComponent> 00000000-0000-0000-0000-000000000000
+      dragHandleManipulation: !<MappingBased.AssignableType_4> 00000000-0000-0000-0000-000000000000
+  ScriptTypes:
+    -
+      {}
+  InputLines:
+    - // @input Component.Text typeLabelText
+    - // @input Component.Text bodyText
+    - // @input Component.Text statusText
+    - // @input AssignableType_1 micButton
+    - // @input Component.Text micButtonLabel
+    - // @input AssignableType_2 translateButton
+    - // @input Component.Text translateButtonLabel
+    - // @input AssignableType_3 deleteButton
+    - // @input Component.Text deleteButtonLabel
+    - // @input Component.ColliderComponent dragHandleCollider
+    - // @input AssignableType_4 dragHandleManipulation

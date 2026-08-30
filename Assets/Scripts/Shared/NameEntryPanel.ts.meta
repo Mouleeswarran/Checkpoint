@@ -1,0 +1,58 @@
+- !<AssetImportMetadata/5067d4bd-9216-41e4-a3c9-97836ba5de54>
+  ImportedAssetIds:
+    TypeScriptAsset: !<reference> 2812ca52-0a4e-425d-b9c3-54bdcd196a8e
+  ImporterName: TypeScriptAssetImporter
+  PrimaryAsset: !<reference> 2812ca52-0a4e-425d-b9c3-54bdcd196a8e
+  PackageType: NotAPackage
+  LegacyPackagePolicy: ~
+  ExtraData:
+    {}
+  AssetDataMap:
+    TypeScriptAsset: !<own> 566fde35-082b-42da-9ca5-5f4b183c4fe6
+  DependentFiles:
+    []
+  ImporterSettings: !<AssetImporterSettings>
+    {}
+  CompressionSettings: !<own> 00000000-0000-0000-0000-000000000000
+- !<TypeScriptAssetData/566fde35-082b-42da-9ca5-5f4b183c4fe6>
+  SvgIcon: ""
+  SetupScript:
+    code: ""
+  Description: ""
+  VersionMajor: 0
+  VersionMinor: 0
+  VersionPatch: 0
+  VersionPrerelease: ""
+  UpdateOrder: 0
+  ComponentUid: 5c34ce0a-5dbb-4cbe-8543-e6468c2feacc
+  ExportUid: 00000000-0000-0000-0000-000000000000
+  PackagePolicy: CanBeUnpacked
+  ScriptInputsHidden:
+    headerText: false
+    inputField: false
+    saveButton: false
+    saveButtonLabel: false
+    welcomeText: false
+  ScriptTypesHidden:
+    {}
+  ReadMe: !<reference> 00000000-0000-0000-0000-000000000000
+  DeclarationFile: !<reference> 00000000-0000-0000-0000-000000000000
+  Tags:
+    []
+  Attachments:
+    []
+  DefaultScriptInputs:
+    - welcomeText: !<reference.Text> 00000000-0000-0000-0000-000000000000
+      headerText: !<reference.Text> 00000000-0000-0000-0000-000000000000
+      inputField: !<MappingBased.AssignableType_1> 00000000-0000-0000-0000-000000000000
+      saveButton: !<MappingBased.AssignableType_2> 00000000-0000-0000-0000-000000000000
+      saveButtonLabel: !<reference.Text> 00000000-0000-0000-0000-000000000000
+  ScriptTypes:
+    -
+      {}
+  InputLines:
+    - // @input Component.Text welcomeText
+    - // @input Component.Text headerText
+    - // @input AssignableType_1 inputField
+    - // @input AssignableType_2 saveButton
+    - // @input Component.Text saveButtonLabel

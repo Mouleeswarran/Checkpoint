@@ -1,0 +1,52 @@
+- !<AssetImportMetadata/a54ceef5-cb8e-44ab-982d-77c6ed75e578>
+  ImportedAssetIds:
+    TypeScriptAsset: !<reference> 7fc6cae1-035b-43ca-8341-d7520733408a
+  ImporterName: TypeScriptAssetImporter
+  PrimaryAsset: !<reference> 7fc6cae1-035b-43ca-8341-d7520733408a
+  PackageType: NotAPackage
+  LegacyPackagePolicy: ~
+  ExtraData:
+    {}
+  AssetDataMap:
+    TypeScriptAsset: !<own> cc9341ff-885f-4c89-a33a-87a5bb06ab39
+  DependentFiles:
+    []
+  ImporterSettings: !<AssetImporterSettings>
+    {}
+  CompressionSettings: !<own> 00000000-0000-0000-0000-000000000000
+- !<TypeScriptAssetData/cc9341ff-885f-4c89-a33a-87a5bb06ab39>
+  SvgIcon: ""
+  SetupScript:
+    code: ""
+  Description: ""
+  VersionMajor: 0
+  VersionMinor: 0
+  VersionPatch: 0
+  VersionPrerelease: ""
+  UpdateOrder: 0
+  ComponentUid: 9902fa79-8d63-4eed-8e36-431dfc291ef5
+  ExportUid: 00000000-0000-0000-0000-000000000000
+  PackagePolicy: CanBeUnpacked
+  ScriptInputsHidden:
+    bodyFont: false
+    buttonFont: false
+    headerFont: false
+  ScriptTypesHidden:
+    {}
+  ReadMe: !<reference> 00000000-0000-0000-0000-000000000000
+  DeclarationFile: !<reference> 00000000-0000-0000-0000-000000000000
+  Tags:
+    []
+  Attachments:
+    []
+  DefaultScriptInputs:
+    - headerFont: !<reference.Font> 00000000-0000-0000-0000-000000000000
+      buttonFont: !<reference.Font> 00000000-0000-0000-0000-000000000000
+      bodyFont: !<reference.Font> 00000000-0000-0000-0000-000000000000
+  ScriptTypes:
+    -
+      {}
+  InputLines:
+    - '// @input Asset.Font headerFont {"hint":"Panel titles only (e.g. \"Select Site\", \"Work Session\"). Default: Anton."}'
+    - '// @input Asset.Font buttonFont {"hint":"Button and tile labels (e.g. \"+ Plain\", \"Save\", \"Sticky Notes\"). Default: Big Shoulders."}'
+    - '// @input Asset.Font bodyFont {"hint":"Paragraph-length body/status text (AI summaries, note content). Default: Encode Sans Semi Condensed."}'

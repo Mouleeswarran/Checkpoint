@@ -1,0 +1,71 @@
+- !<AssetImportMetadata/f05e0715-e6d2-482f-905a-d2b61b4feb48>
+  ImportedAssetIds:
+    TypeScriptAsset: !<reference> 9b36686f-2a5e-432b-af3a-7aa2325109fd
+  ImporterName: TypeScriptAssetImporter
+  PrimaryAsset: !<reference> 9b36686f-2a5e-432b-af3a-7aa2325109fd
+  PackageType: NotAPackage
+  LegacyPackagePolicy: ~
+  ExtraData:
+    {}
+  AssetDataMap:
+    TypeScriptAsset: !<own> a2cc1258-a57a-4a5d-a21b-60eb0e72f55b
+  DependentFiles:
+    []
+  ImporterSettings: !<AssetImporterSettings>
+    {}
+  CompressionSettings: !<own> 00000000-0000-0000-0000-000000000000
+- !<TypeScriptAssetData/a2cc1258-a57a-4a5d-a21b-60eb0e72f55b>
+  SvgIcon: ""
+  SetupScript:
+    code: ""
+  Description: ""
+  VersionMajor: 0
+  VersionMinor: 0
+  VersionPatch: 0
+  VersionPrerelease: ""
+  UpdateOrder: 0
+  ComponentUid: f10d290a-159d-48fa-a2bb-e8a760c513ca
+  ExportUid: 00000000-0000-0000-0000-000000000000
+  PackagePolicy: CanBeUnpacked
+  ScriptInputsHidden:
+    cameraObject: false
+    extraRoots: false
+    historyPanel: false
+    mainMenu: false
+    nameEntryPanel: false
+    notePlacer: false
+    sessionContextPanel: false
+    sessionRecorder: false
+    sitePicker: false
+  ScriptTypesHidden:
+    {}
+  ReadMe: !<reference> 00000000-0000-0000-0000-000000000000
+  DeclarationFile: !<reference> 00000000-0000-0000-0000-000000000000
+  Tags:
+    []
+  Attachments:
+    []
+  DefaultScriptInputs:
+    - nameEntryPanel: !<MappingBased.AssignableType_1> 00000000-0000-0000-0000-000000000000
+      sitePicker: !<MappingBased.AssignableType_2> 00000000-0000-0000-0000-000000000000
+      mainMenu: !<MappingBased.AssignableType_3> 00000000-0000-0000-0000-000000000000
+      notePlacer: !<MappingBased.AssignableType_4> 00000000-0000-0000-0000-000000000000
+      sessionRecorder: !<MappingBased.AssignableType_5> 00000000-0000-0000-0000-000000000000
+      historyPanel: !<MappingBased.AssignableType_6> 00000000-0000-0000-0000-000000000000
+      sessionContextPanel: !<MappingBased.AssignableType_7> 00000000-0000-0000-0000-000000000000
+      cameraObject: !<reference.SceneObject> 00000000-0000-0000-0000-000000000000
+      extraRoots: !<reference.SceneObject[]>
+        []
+  ScriptTypes:
+    -
+      {}
+  InputLines:
+    - // @input AssignableType_1 nameEntryPanel
+    - // @input AssignableType_2 sitePicker
+    - // @input AssignableType_3 mainMenu
+    - // @input AssignableType_4 notePlacer
+    - // @input AssignableType_5 sessionRecorder
+    - // @input AssignableType_6 historyPanel
+    - // @input AssignableType_7 sessionContextPanel
+    - // @input SceneObject cameraObject
+    - "// @input SceneObject[] extraRoots = {}"

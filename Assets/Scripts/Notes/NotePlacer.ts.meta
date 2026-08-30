@@ -1,0 +1,106 @@
+- !<AssetImportMetadata/7d150d68-a75b-4691-aa58-00735aa81522>
+  ImportedAssetIds:
+    TypeScriptAsset: !<reference> 566b3445-816d-4dc6-9bb1-6479b7b72682
+  ImporterName: TypeScriptAssetImporter
+  PrimaryAsset: !<reference> 566b3445-816d-4dc6-9bb1-6479b7b72682
+  PackageType: NotAPackage
+  LegacyPackagePolicy: ~
+  ExtraData:
+    {}
+  AssetDataMap:
+    TypeScriptAsset: !<own> 880a2ff9-9dca-44e2-8f85-6bc2d8767439
+  DependentFiles:
+    []
+  ImporterSettings: !<AssetImporterSettings>
+    {}
+  CompressionSettings: !<own> 00000000-0000-0000-0000-000000000000
+- !<TypeScriptAssetData/880a2ff9-9dca-44e2-8f85-6bc2d8767439>
+  SvgIcon: ""
+  SetupScript:
+    code: ""
+  Description: ""
+  VersionMajor: 0
+  VersionMinor: 0
+  VersionPatch: 0
+  VersionPrerelease: ""
+  UpdateOrder: 0
+  ComponentUid: 40d10655-fa44-4ca6-b937-20699b2d9efd
+  ExportUid: 00000000-0000-0000-0000-000000000000
+  PackagePolicy: CanBeUnpacked
+  ScriptInputsHidden:
+    cameraObject: false
+    cancelButton: false
+    cancelButtonLabel: false
+    customLocationLoader: false
+    dangerButton: false
+    dangerButtonLabel: false
+    headerText: false
+    infoButton: false
+    infoButtonLabel: false
+    menuButton: false
+    menuButtonLabel: false
+    notePrefab: false
+    placeHereButton: false
+    placeHereButtonLabel: false
+    placeHereRow: false
+    plainButton: false
+    plainButtonLabel: false
+    statusText: false
+    stickyNoteHandMenu: false
+    warningButton: false
+    warningButtonLabel: false
+  ScriptTypesHidden:
+    {}
+  ReadMe: !<reference> 00000000-0000-0000-0000-000000000000
+  DeclarationFile: !<reference> 00000000-0000-0000-0000-000000000000
+  Tags:
+    []
+  Attachments:
+    []
+  DefaultScriptInputs:
+    - customLocationLoader: !<MappingBased.AssignableType_1> 00000000-0000-0000-0000-000000000000
+      stickyNoteHandMenu: !<MappingBased.AssignableType_2> 00000000-0000-0000-0000-000000000000
+      cameraObject: !<reference.SceneObject> 00000000-0000-0000-0000-000000000000
+      notePrefab: !<reference.ObjectPrefab> 00000000-0000-0000-0000-000000000000
+      headerText: !<reference.Text> 00000000-0000-0000-0000-000000000000
+      menuButton: !<MappingBased.AssignableType_3> 00000000-0000-0000-0000-000000000000
+      menuButtonLabel: !<reference.Text> 00000000-0000-0000-0000-000000000000
+      plainButton: !<MappingBased.AssignableType_4> 00000000-0000-0000-0000-000000000000
+      plainButtonLabel: !<reference.Text> 00000000-0000-0000-0000-000000000000
+      infoButton: !<MappingBased.AssignableType_5> 00000000-0000-0000-0000-000000000000
+      infoButtonLabel: !<reference.Text> 00000000-0000-0000-0000-000000000000
+      warningButton: !<MappingBased.AssignableType_6> 00000000-0000-0000-0000-000000000000
+      warningButtonLabel: !<reference.Text> 00000000-0000-0000-0000-000000000000
+      dangerButton: !<MappingBased.AssignableType_7> 00000000-0000-0000-0000-000000000000
+      dangerButtonLabel: !<reference.Text> 00000000-0000-0000-0000-000000000000
+      placeHereRow: !<reference.SceneObject> 00000000-0000-0000-0000-000000000000
+      placeHereButton: !<MappingBased.AssignableType_8> 00000000-0000-0000-0000-000000000000
+      placeHereButtonLabel: !<reference.Text> 00000000-0000-0000-0000-000000000000
+      cancelButton: !<MappingBased.AssignableType_9> 00000000-0000-0000-0000-000000000000
+      cancelButtonLabel: !<reference.Text> 00000000-0000-0000-0000-000000000000
+      statusText: !<reference.Text> 00000000-0000-0000-0000-000000000000
+  ScriptTypes:
+    -
+      {}
+  InputLines:
+    - // @input AssignableType_1 customLocationLoader
+    - // @input AssignableType_2 stickyNoteHandMenu
+    - // @input SceneObject cameraObject
+    - // @input Asset.ObjectPrefab notePrefab
+    - // @input Component.Text headerText
+    - // @input AssignableType_3 menuButton
+    - // @input Component.Text menuButtonLabel
+    - // @input AssignableType_4 plainButton
+    - // @input Component.Text plainButtonLabel
+    - // @input AssignableType_5 infoButton
+    - // @input Component.Text infoButtonLabel
+    - // @input AssignableType_6 warningButton
+    - // @input Component.Text warningButtonLabel
+    - // @input AssignableType_7 dangerButton
+    - // @input Component.Text dangerButtonLabel
+    - // @input SceneObject placeHereRow
+    - // @input AssignableType_8 placeHereButton
+    - // @input Component.Text placeHereButtonLabel
+    - // @input AssignableType_9 cancelButton
+    - // @input Component.Text cancelButtonLabel
+    - // @input Component.Text statusText
