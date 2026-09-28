@@ -1,6 +1,6 @@
 # Checkpoint
 
-**Version control for the physical world.** Built for field technicians (electricians, plumbers, HVAC techs, mechanics, TV installers, and similar on-site trades) who hand off work to each other across time, often without ever meeting.
+**Version control for the physical world.** Built for field technicians (electricians, plumbers, HVAC techs, mechanics, installers, and similar on-site trades) who hand off work to each other across time, often without ever meeting.
 
 A technician arrives at a job site wearing Spectacles. They:
 
